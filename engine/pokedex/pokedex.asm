@@ -672,10 +672,10 @@ Area_Page:
  	ld [wPrevDexEntryJumptableIndex], a ; same ram as wStatsScreenFlags
  	ret
  
- Area_Page_map:
- 	ld a, [wPrevDexEntryJumptableIndex] ; same ram as wStatsScreenFlags
- 	push af
- 	call LoadTilemapToTempTilemap
+Area_Page_map:
+	ld a, [wPrevDexEntryJumptableIndex] ; same ram as wStatsScreenFlags
+	push af
+	call LoadTilemapToTempTilemap
 	call Pokedex_BlackOutBG
 	xor a
 	ldh [hSCX], a
@@ -689,8 +689,6 @@ Area_Page:
 	ld e, a
 	predef Pokedex_GetArea
 	call Pokedex_BlackOutBG
-	call Pokedex_LoadGFX
- 	call Pokedex_LoadAnyFootprint
 	call DelayFrame
 	xor a
 	ldh [hBGMapMode], a
@@ -707,7 +705,7 @@ Area_Page:
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	pop af
- 	ld [wPrevDexEntryJumptableIndex], a ; same ram as wStatsScreenFlags
+	ld [wPrevDexEntryJumptableIndex], a ; same ram as wStatsScreenFlags
 	ret
 
 Evos_Page:
