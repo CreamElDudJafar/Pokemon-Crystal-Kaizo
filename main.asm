@@ -717,13 +717,20 @@ INCBIN "gfx/pokedex/inversed_rightarrow.1bpp"
 
 
 SECTION "Nayru Pokedex2", ROMX
+
 INCLUDE "engine/pokedex/pokedex_2.asm"
 
 
 SECTION "Bank3E Overflow", ROMX
+
 INCLUDE "engine/link/time_capsule.asm"
 INCLUDE "engine/link/time_capsule_2.asm"
 INCLUDE "engine/events/magikarp.asm"
+
+
+SECTION "Battle Weather Images", ROMX
+
+INCLUDE "gfx/weather_images.asm"
 
 
 SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
