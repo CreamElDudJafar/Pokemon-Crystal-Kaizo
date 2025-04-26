@@ -1115,6 +1115,11 @@ _PlayersPCNoItemsText::
 	text "No items here!"
 	prompt
 
+_CantDepositText::
+	text "TM/HM or Key Items"
+	line "can't be deposited."
+	prompt
+
 _PlayersPCHowManyDepositText::
 	text "How many do you"
 	line "want to deposit?"
