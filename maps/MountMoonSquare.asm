@@ -143,7 +143,7 @@ MountMoonSquare_MapEvents:
 
 	def_bg_events
 	bg_event  7,  7, BGEVENT_ITEM, MountMoonSquareHiddenMoonStone
-	bg_event 17,  7, BGEVENT_READ, DontLitterSign
+	bg_event 24,  6, BGEVENT_READ, DontLitterSign
 
 	def_object_events
 	object_event  6,  6, SPRITE_FAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY

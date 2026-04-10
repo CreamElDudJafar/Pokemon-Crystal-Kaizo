@@ -264,8 +264,8 @@ PokecomCenterAdminOfficeMobile_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  0, 31, GOLDENROD_POKECENTER_1F, 3
-	warp_event  1, 31, GOLDENROD_POKECENTER_1F, 3
+	warp_event  0, 15, GOLDENROD_POKECENTER_1F, 3
+	warp_event 18, 22, GOLDENROD_POKECENTER_1F, 3
 
 	def_coord_events
 
@@ -275,6 +275,6 @@ PokecomCenterAdminOfficeMobile_MapEvents:
 	bg_event  3, 26, BGEVENT_UP, PokecomCenterAdminOfficeMobileComputer3
 
 	def_object_events
-	object_event  4, 28, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PokecomCenterAdminOfficeMobileScientist1Script, -1
+	object_event 17, 23, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PokecomCenterAdminOfficeMobileScientist1Script, -1
 	object_event  7, 27, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PokecomCenterAdminOfficeMobileScientist2Script, -1
 	object_event  7, 29, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PokecomCenterAdminOfficeMobileScientist3Script, -1
