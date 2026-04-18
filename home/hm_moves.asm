@@ -1,4 +1,4 @@
-; HM moves can't be forgotten
+; HM moves can be forgotten
 
 IsHM::
 	cp HM01
@@ -9,17 +9,17 @@ IsHM::
 	and a
 	ret
 
-IsHMMove::
-	ld hl, .HMMoves
-	ld de, 1
-	jp IsInArray
+;IsHMMove::
+;	ld hl, .HMMoves
+;	ld de, 1
+;	jp IsInArray
 
-.HMMoves:
-	db CUT
-	db FLY
-	db SURF
-	db STRENGTH
-	db FLASH
-	db WATERFALL
-	db WHIRLPOOL
-	db -1 ; end
+;.HMMoves:
+;	db CUT
+;	db FLY
+;	db SURF
+;	db STRENGTH
+;	db FLASH
+;	db WATERFALL
+;	db WHIRLPOOL
+;	db -1 ; end
