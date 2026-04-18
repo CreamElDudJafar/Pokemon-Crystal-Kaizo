@@ -1,3 +1,43 @@
+# Pokémon Crystal Kaizo
+
+This is a disassembly of Pokémon Crystal Kaizo.
+
+Crystal Kaizo started as a binary/hex edit hack by SinisterHoodedFigure (SHF).
+
+A few years later, the Pret disassembly of Pokemon Crystal was completed.
+
+Since then, new Kaizo hacks have been made and becoming more popular. Crystal Kaizo, due to being older wasn't able to be updated much as binary editing has gone away.
+
+I reached out to SHF about updating some of his other games in 2024/2025. Those games have been updated and you can find the patches here: https://github.com/CreamElDudJafar/SHF-Kaizo-Patches
+
+However, with the creation of Yellow Kaizo and Platinum Kaizo in 2026, I decided the world needs a Crystal Kaizo disassembly so here it is!
+
+Their is 2 branches here for you to choose from:
+
+Master- Crystal Kaizo (2025/2026 Update)
+2016- Crystal Kaizo (2016 Version)
+
+CREDITS: Remaking Crystal Kaizo in disassembly could not have been done without the following contributors:
+
+- SHF for creating Crystal Kaizo and updating it in 2025/2026
+- Swampert/Swampert Tools for allowing me to read some of the code without reading Hex
+- Gold Finger/HxD hex editors for reading the Crystal Kaizo Hex code
+- Pret for disassembly of Pokemon Crystak
+- DigitalZeroDomain for G2Map
+- Guzeinbuick for Gen 2 Toolbox tools and all creators of tools: https://www.pokecommunity.com/threads/gen-ii-toolbox-hacking-gsc-without-dissassemblies-in-2023.491799/
+
+This is open source for anyone and all to use as a base, however, with that being said please take the time to credit this repo and contributors.
+
+Below is where you can find some other information about the game originally:
+https://www.pokecommunity.com/threads/pok%C3%A9mon-crystal-kaizo-the-official-sequel-to-blue-kaizo.334713/
+
+ANY ISSUES, COMMENTS, OR BUGS, PLEASE REACH OUT
+
+THANKS AND ENJOY!
+
+
+ORIGINAL CRYSTAL INFORMATION BELOW
+
 # Pokémon Crystal [![Build Status][ci-badge]][ci]
 
 This is a disassembly of Pokémon Crystal.
