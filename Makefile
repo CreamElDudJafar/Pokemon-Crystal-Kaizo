@@ -122,7 +122,7 @@ tools:
 
 
 d:
-	tools/free_space.awk BANK=all pokecrystal_debug.map
+	$(MAKE) -C tools/
 
 RGBASMFLAGS = -Q8 -P includes.asm -Weverything -Wnumeric-string=2 -Wtruncation=1
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
