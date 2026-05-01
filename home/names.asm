@@ -27,10 +27,10 @@ GetName::
 	ld a, [wCurSpecies]
 	ld [wNamedObjectIndex], a
 	call GetPokemonName
-	ld hl, MON_NAME_LENGTH
-	add hl, de
-	ld e, l
-	ld d, h
+;	ld hl, MON_NAME_LENGTH
+;	add hl, de
+;	ld e, l
+;	ld d, h
 	jr .done
 
 .NotPokeName:
@@ -57,10 +57,10 @@ GetName::
 	call CopyBytes
 
 .done
-	ld a, e
-	ld [wUnusedNamesPointer], a
-	ld a, d
-	ld [wUnusedNamesPointer + 1], a
+;	ld a, e
+;	ld [wUnusedNamesPointer], a
+;	ld a, d
+;	ld [wUnusedNamesPointer + 1], a
 
 	pop de
 	pop bc
