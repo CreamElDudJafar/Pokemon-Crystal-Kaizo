@@ -865,9 +865,6 @@ wc7d2:: ds 1
 wc7d3:: ds 2
 ENDU
 
-
-SECTION "Unused Map Buffer", WRAM0
-
 	ds 24
 
 
@@ -2692,7 +2689,7 @@ wCurBaseDataEnd::
 
 wCurDamage:: dw
 
-	ds 2
+	ds 3
 
 wMornEncounterRate::  db
 wDayEncounterRate::   db
@@ -2700,7 +2697,6 @@ wNiteEncounterRate::  db
 wWaterEncounterRate:: db
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
-wInitListType:: db
 wBattleHasJustStarted:: db
 
 wNamedObjectIndex::
