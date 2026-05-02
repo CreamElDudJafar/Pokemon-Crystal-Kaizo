@@ -1,3 +1,21 @@
+_PrintNumFromReg::
+; Print c digits of 16bit number in de to hl. Printnum flags, but not bytecount,
+; is preserved.
+	push hl
+	ld hl, hPrintNumBuffer
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld [hl], e
+	pop hl
+	ld de, hPrintNumBuffer + 2
+	ld a, %11110000
+	and b
+	or 2
+	ld b, a
+	; fallthrough
 _PrintNum::
 ; Print c digits of the b-byte value from de to hl.
 ; Allows 2 to 7 digits. For 1-digit numbers, add

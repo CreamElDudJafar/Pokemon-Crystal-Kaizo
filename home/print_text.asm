@@ -99,6 +99,10 @@ CopyDataUntil::
 	jr nz, CopyDataUntil
 	ret
 
+PrintNumFromReg::
+	homecall _PrintNumFromReg
+	ret
+
 PrintNum::
 	homecall _PrintNum
 	ret

@@ -476,20 +476,31 @@ Options_Frame:
 .RightPressed:
 	ld a, [hl]
 	inc a
+	cp NUM_FRAMES
+	jr nz, .Save
+	xor a
 	jr .Save
 
 .LeftPressed:
 	ld a, [hl]
 	dec a
+	cp -1
+	jr nz, .Save
+	ld a, NUM_FRAMES - 1
 
 .Save:
-	maskbits NUM_FRAMES
 	ld [hl], a
 UpdateFrame:
 	ld a, [wTextboxFrame]
-	hlcoord 16, 15 ; where on the screen the number is drawn
-	add '1'
-	ld [hl], a
+	inc a
+	ld e, a
+	ld d, 0
+	hlcoord 16, 15
+	inc hl
+	ld a, ' '
+	ld [hld], a
+	lb bc, PRINTNUM_LEFTALIGN, 2
+	call PrintNumFromReg
 	call LoadFontsExtra
 	and a
 	ret
