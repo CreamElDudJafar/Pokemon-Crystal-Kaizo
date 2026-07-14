@@ -10,4 +10,4 @@ ContestMons:
 	db  9, PINSIR,     30, 31
 	db  9, SCYTHER,    30, 31
 	db  9, VENOMOTH,   30, 31
-	db  9, HERACROSS,  30, 31
+	db  9, HERACROSS,  30, 31 ; SHOULD BE db -1, CAUSES BUG NOT TERMINATING LIST
