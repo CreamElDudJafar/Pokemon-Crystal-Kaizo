@@ -164,6 +164,7 @@ ItemNameOrder:
 
 ; Key Items
     db TOWN_MAP 		; 8b
+    db POCKET_PC                ; 8b
     db BICYCLE			; 8c
     db OLD_ROD 			; 8d
     db GOOD_ROD			; 8e
@@ -198,7 +199,7 @@ ItemNameOrder:
     db BLK_APRICORN		; a9
     db PNK_APRICORN		; aa
 
-REPT 22
+REPT 21	
 	db $FF ; fill with empty bytes to reach NUM_ITEMS + 1
 ENDR
 
