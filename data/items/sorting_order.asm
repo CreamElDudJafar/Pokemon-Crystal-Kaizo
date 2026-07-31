@@ -147,59 +147,61 @@ ItemNameOrder:
 	db GOLD_LEAF		; 7c
 	db SLOWPOKETAIL 	; 7d
 
-	db ITEM_93 			; 7e
-	db ITEM_94 			; 7f
-	db ITEM_95			; 80
 
-	db FLOWER_MAIL 		; 81
-	db SURF_MAIL		; 82
-	db LITEBLUEMAIL 	; 83
-	db PORTRAITMAIL 	; 84
-	db LOVELY_MAIL 		; 85
-	db EON_MAIL 		; 86
-	db MORPH_MAIL 		; 87
-	db BLUESKY_MAIL 	; 88
-	db MUSIC_MAIL 		; 89
-	db MIRAGE_MAIL 		; 8a
+	db FLOWER_MAIL 		; 7f
+	db SURF_MAIL		; 80
+	db LITEBLUEMAIL 	; 81
+	db PORTRAITMAIL 	; 82
+	db LOVELY_MAIL 		; 83
+	db EON_MAIL 		; 84
+	db MORPH_MAIL 		; 85
+	db BLUESKY_MAIL 	; 86
+	db MUSIC_MAIL 		; 87
+	db MIRAGE_MAIL 		; 88
 
 ; Key Items
-    db TOWN_MAP 		; 8b
-    db POCKET_PC                ; 8b
-    db BICYCLE			; 8c
-    db OLD_ROD 			; 8d
-    db GOOD_ROD			; 8e
-    db SUPER_ROD		; 8f
-    db ITEMFINDER		; 90
-    db POKE_FLUTE		; 91
-    db COIN_CASE		; 92
-    db RED_SCALE		; 93
-    db S_S_TICKET		; 94
-    db MYSTERY_EGG		; 95
-    db CLEAR_BELL		; 96
-    db SILVER_WING		; 97
-    db RAINBOW_WING		; 98
-    db CARD_KEY			; 99
-    db MACHINE_PART		; 9a
-    db EGG_TICKET		; 9b
-    db LOST_ITEM		; 9c
-    db BASEMENT_KEY		; 9d
-    db PASS 			; 9e
-    db NORMAL_BOX 		; 9f
-    db GORGEOUS_BOX 	; a0
-    db POLKADOT_BOW 	; a1
-    db SQUIRTBOTTLE 	; a2
-    db BLUE_CARD 		; a3
+    db POCKET_PC                ; 89
+    db CANDY_BAG                ; 8a
+    db STATUS_KIT               ; 8b
+    db REPELLENT                ; 8c
+    db HEALING_KIT              ; 8d
+    db TRAINING_KIT             ; 8e
+    db TOWN_MAP                 ; 8f
+    db BICYCLE			; 90
+    db OLD_ROD 			; 91
+    db GOOD_ROD			; 92
+    db SUPER_ROD		; 93
+    db ITEMFINDER		; 94
+    db POKE_FLUTE		; 95
+    db COIN_CASE		; 96
+    db RED_SCALE		; 97
+    db S_S_TICKET		; 98
+    db MYSTERY_EGG		; 99
+    db CLEAR_BELL		; 9a
+    db SILVER_WING		; 9b
+    db RAINBOW_WING		; 9c
+    db CARD_KEY			; 9d
+    db MACHINE_PART		; 9e
+    db EGG_TICKET		; 9f
+    db LOST_ITEM		; a0
+    db BASEMENT_KEY		; a1
+    db PASS 			; a2
+    db NORMAL_BOX 		; a3
+    db GORGEOUS_BOX 	; a4
+    db POLKADOT_BOW 	; a5
+    db SQUIRTBOTTLE 	; a6
+    db BLUE_CARD 		; a7
 
 ; Apricorns
-    db RED_APRICORN 	; a4
-    db BLU_APRICORN 	; a5
-    db YLW_APRICORN		; a6
-    db GRN_APRICORN		; a7
-    db WHT_APRICORN		; a8
-    db BLK_APRICORN		; a9
-    db PNK_APRICORN		; aa
+    db RED_APRICORN 	; a8
+    db BLU_APRICORN 	; a9
+    db YLW_APRICORN		; aa
+    db GRN_APRICORN		; ab
+    db WHT_APRICORN		; ac
+    db BLK_APRICORN		; ad
+    db PNK_APRICORN		; ae
 
-REPT 21	
+REPT 19
 	db $FF ; fill with empty bytes to reach NUM_ITEMS + 1
 ENDR
 

@@ -1054,8 +1054,8 @@ _PokegearAskWhoCallText::
 	done
 
 _PokegearPressButtonText::
-	text "Press any button"
-	line "to exit."
+	text "A: Resets Clock"
+	line "B: Exits #GEAR"
 	done
 
 _PokegearAskDeleteText::
@@ -1344,6 +1344,12 @@ _ItemBelongsToSomeoneElseText::
 _ItemWontHaveEffectText::
 	text "It won't have any"
 	line "effect."
+	prompt
+
+_GainedALotOfExpText::
+	text_ram wStringBuffer1
+	text " gained"
+	line "a lot of EXP!"
 	prompt
 
 _BallBlockedText::

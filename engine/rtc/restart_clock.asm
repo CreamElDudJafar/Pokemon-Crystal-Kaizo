@@ -39,6 +39,7 @@ RestartClock:
 ; If we're here, we had an RTC overflow.
 	ld hl, .ClockTimeMayBeWrongText
 	call PrintText
+	farcall BlankScreen ; screen needs to be blank first
 	ld hl, wOptions
 	ld a, [hl]
 	push af

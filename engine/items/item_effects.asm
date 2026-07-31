@@ -58,12 +58,12 @@ ItemEffects:
 	dw SuperRepelEffect    ; SUPER_REPEL
 	dw MaxRepelEffect      ; MAX_REPEL
 	dw DireHitEffect       ; DIRE_HIT
-	dw NoEffect            ; ITEM_2D
+	dw RareCandyEffect     ; CANDY_BAG
 	dw RestoreHPEffect     ; FRESH_WATER
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
 	dw XItemEffect         ; X_ATTACK
-	dw NoEffect            ; ITEM_32
+	dw StatusKitEffect      ; STATUS_KIT
 	dw XItemEffect         ; X_DEFEND
 	dw XItemEffect         ; X_SPEED
 	dw XItemEffect         ; X_SPECIAL
@@ -160,9 +160,9 @@ ItemEffects:
 	dw NoEffect            ; DRAGON_FANG
 	dw NoEffect            ; ITEM_91
 	dw NoEffect            ; LEFTOVERS
-	dw NoEffect            ; ITEM_93
-	dw NoEffect            ; ITEM_94
-	dw NoEffect            ; ITEM_95
+	dw RepellentEffect     ; REPELLENT
+	dw HealingKitEffect    ; HEALING_KIT
+	dw TrainingKitEffect   ; TRAINING_KIT
 	dw RestorePPEffect     ; MYSTERYBERRY
 	dw NoEffect            ; DRAGON_SCALE
 	dw NoEffect            ; BERSERK_GENE
@@ -1344,6 +1344,9 @@ RareCandyEffect:
 	ld [wForceEvolution], a
 	farcall EvolvePokemon
 
+	ld a, [wCurItem]
+	cp CANDY_BAG
+	ret z
 	jp UseDisposableItem
 
 HealPowderEffect:
@@ -2028,6 +2031,167 @@ EscapeRopeEffect:
 	cp 1
 	call z, UseDisposableItem
 	ret
+
+StatusKitEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, RareCandy_StatBooster_ExitMenu
+
+	call IsMonFainted
+	jp z, NoEffectMessage
+
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	ld a, [hl]
+	and a
+	jp nz, NoEffectMessage
+
+	push hl
+	ld hl, StatusKitParalyzeText
+	call PrintText
+	call YesNoBox
+	jr nc, .paralyze
+
+	ld hl, StatusKitBurnText
+	call PrintText
+	call YesNoBox
+	jr nc, .burn
+
+	ld hl, StatusKitPoisonText
+	call PrintText
+	call YesNoBox
+	jr nc, .poison
+
+	pop hl
+	xor a
+	ld [wItemEffectSucceeded], a
+	ret
+
+.paralyze
+	ld a, 1 << PAR
+	jr .apply
+.burn
+	ld a, 1 << BRN
+	jr .apply
+.poison
+	ld a, 1 << PSN
+.apply
+	pop hl
+	ld [hl], a
+	call Play_SFX_FULL_HEAL
+	ld hl, StatusKitAppliedText
+	call PrintText
+	ret
+
+RepellentEffect:
+	ld a, [wRepelEffect]
+	and a
+	ld hl, RepelUsedEarlierIsStillInEffectText
+	jp nz, PrintText
+	ld a, 250
+	ld [wRepelEffect], a
+	ld a, MAX_REPEL
+	ld [wRepelType], a
+	ld hl, ItemUsedText
+	call PrintText
+	call Play_SFX_FULL_HEAL
+	jp WaitPressAorB_BlinkCursor
+
+HealingKitEffect:
+	ld hl, HealingKitPromptText
+	call PrintText
+	call YesNoBox
+	jr c, .cancel
+	farcall HealParty
+	call Play_SFX_FULL_HEAL
+	ld hl, HealingKitUsedText
+	call PrintText
+	ret
+.cancel
+	xor a
+	ld [wItemEffectSucceeded], a
+	ret
+
+TrainingKitEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, RareCandy_StatBooster_ExitMenu
+
+	call RareCandy_StatBooster_GetParameters
+
+	; Training Kit has no effect at level 100.
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, [hl]
+	cp MAX_LEVEL
+	jp nc, NoEffectMessage
+
+	; Calculate the EXP required for the next level.
+	push de
+	inc a
+	ld d, a
+	farcall CalcExpAtLevel
+	pop de
+
+	; Set the Pokémon's EXP to one point below that amount.
+	ld a, MON_EXP
+	call GetPartyParamLocation
+	ld bc, 2
+	add hl, bc
+
+	ldh a, [hMultiplicand + 2]
+	sub 1
+	ld [hld], a
+
+	ldh a, [hMultiplicand + 1]
+	sbc 0
+	ld [hld], a
+
+	ldh a, [hMultiplicand]
+	sbc 0
+	ld [hl], a
+
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonNicknames
+	call GetNickname
+
+	ld hl, GainedALotOfExpText
+	call PrintText
+	jp ClearPalettes
+
+StatusKitParalyzeText:
+	text "PARALYZE a"
+	line "#MON?"
+	done
+
+StatusKitBurnText:
+	text "BURN a"
+	line "#MON?"
+	done
+
+StatusKitPoisonText:
+	text "POISON a"
+	line "#MON?"
+	done
+
+StatusKitAppliedText:
+	text "The status was"
+	line "successfully set!"
+	prompt
+
+HealingKitPromptText:
+	text "Fully heal your"
+	line "party?"
+	done
+
+HealingKitUsedText:
+	text "Your party was"
+	line "fully healed!"
+	prompt
+
+GainedALotOfExpText:
+	text_far _GainedALotOfExpText
+	text_end	
 
 SuperRepelEffect:
 	ld b, 200

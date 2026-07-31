@@ -456,14 +456,18 @@ PokegearClock_Init:
 
 PokegearClock_Joypad:
 	call .UpdateClock
-	ld hl, hJoyLast
-	ld a, [hl]
-	and PAD_BUTTONS
+; A and B should trigger only on a new button press.
+	ldh a, [hJoyPressed]
+	and PAD_B
 	jr nz, .quit
-	ld a, [hl]
+	ldh a, [hJoyPressed]
+	and PAD_A
+	jr nz, .clockreset
+	; Left and Right may use held input for page switching.
+	ldh a, [hJoyLast]
 	and PAD_LEFT
- 	jr nz, .left
- 	ld a, [hl]
+	jr nz, .left
+	ldh a, [hJoyLast]
 	and PAD_RIGHT
 	ret z
 	ld a, [wPokegearFlags]
@@ -472,6 +476,11 @@ PokegearClock_Joypad:
 	ld c, POKEGEARSTATE_MAPCHECKREGION
 	ld b, POKEGEARCARD_MAP
 	jr .done
+
+.clockreset
+	farcall RestartClock
+	call InitPokegearTilemap ; needed incase exit without setting the time
+	ret
 
 .no_map_card
 	ld a, [wPokegearFlags]

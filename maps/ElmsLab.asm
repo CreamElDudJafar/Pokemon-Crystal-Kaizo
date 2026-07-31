@@ -459,35 +459,28 @@ ElmJumpRightScript:
 AideScript_WalkPotion1:
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksRight1
 	turnobject PLAYER, DOWN
-	scall AideScript_GivePotion
-	scall AideScript_GivePocketPC
+	scall AideScript_GiveStarterItems
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft1
 	end
 
 AideScript_WalkPotion2:
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksRight2
 	turnobject PLAYER, DOWN
-	scall AideScript_GivePotion
-	scall AideScript_GivePocketPC
+	scall AideScript_GiveStarterItems
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft2
 	end
 
-AideScript_GivePotion:
+AideScript_GiveStarterItems:
 	opentext
-	writetext AideText_GiveYouPotion
+	writetext AideText_GiveStarterItems
 	promptbutton
-	verbosegiveitem POTION
-	writetext AideText_AlwaysBusy
-	waitbutton
-	closetext
-	end
-
-AideScript_GivePocketPC:
-	opentext
-	writetext AideText_GetPocketPCText
-	promptbutton
-	giveitem POCKET_PC
-	writetext AideText_PocketPCInfoText
+	verbosegiveitem POCKET_PC
+	verbosegiveitem CANDY_BAG
+	verbosegiveitem STATUS_KIT
+	verbosegiveitem REPELLENT
+	verbosegiveitem HEALING_KIT
+	verbosegiveitem TRAINING_KIT
+	writetext AideText_StarterItemsInfo
 	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_NOOP
@@ -511,14 +504,21 @@ AideScript_GiveYouBalls:
 	opentext
 	writetext AideText_GiveYouBalls
 	promptbutton
-	getitemname STRING_BUFFER_4, POKE_BALL
+	getitemname STRING_BUFFER_4, MASTER_BALL
+	giveitem MASTER_BALL, 99
+	iffalse .NoRoom
 	scall AideScript_ReceiveTheBalls
-	giveitem POKE_BALL, 5
 	writetext AideText_ExplainBalls
 	promptbutton
 	itemnotify
 	closetext
 	setscene SCENE_ELMSLAB_NOOP
+	end
+
+.NoRoom:
+	writetext AideText_NoRoomForMasterBalls
+	waitbutton
+	closetext
 	end
 
 AideScript_ReceiveTheBalls:
@@ -1233,10 +1233,10 @@ ElmGiveTicketText2:
 	line "PROF.OAK in KANTO!"
 	done
 
-AideText_GiveYouPotion:
-	text "<PLAY_G>, I want"
-	line "you to have this"
-	cont "for your errand."
+AideText_GiveStarterItems:
+	text "<PLAY_G>, take these"
+	line "tools for your"
+	cont "journey."
 	done
 
 AideText_AlwaysBusy:
@@ -1278,13 +1278,21 @@ AideText_GiveYouBalls:
 	done
 
 AideText_ExplainBalls:
-	text "To add to your"
-	line "#DEX, you have"
-	cont "to catch #MON."
+	text "MASTER BALLS catch"
+	line "any wild #MON"
+	cont "without fail."
 
-	para "Throw # BALLS"
-	line "at wild #MON"
-	cont "to get them."
+	para "Use them to fill"
+	line "your #DEX!"
+	done
+
+AideText_NoRoomForMasterBalls:
+	text "You don't have"
+	line "room for all 99"
+	cont "MASTER BALLS."
+
+	para "Make some room and"
+	line "come back."
 	done
 
 ElmsLabOfficerText1:
@@ -1386,16 +1394,10 @@ ElmsLabPCText:
 	line "screen…"
 	done
 
-AideText_GetPocketPCText:
-	text "Oh, I have this"
-	line "for you too."
+AideText_StarterItemsInfo:
+	text "They can be used"
+	line "again and again."
 
-	para "It's a Pocket PC!"
-	done
-	
-AideText_PocketPCInfoText:
-	text "Use this to manage"
-	line "your party."
 	done
 
 ElmsLab_MapEvents:

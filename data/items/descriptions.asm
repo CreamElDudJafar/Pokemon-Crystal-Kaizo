@@ -45,12 +45,12 @@ ItemDescriptions:
 	dw SuperRepelDesc
 	dw MaxRepelDesc
 	dw DireHitDesc
-	dw TeruSama3Desc
+	dw CandyBagDesc
 	dw FreshWaterDesc
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw TeruSama4Desc
+	dw StatusKitDesc
 	dw XDefendDesc
 	dw XSpeedDesc
 	dw XSpecialDesc
@@ -147,9 +147,9 @@ ItemDescriptions:
 	dw DragonFangDesc
 	dw TeruSama14Desc
 	dw LeftoversDesc
-	dw TeruSama15Desc
-	dw TeruSama16Desc
-	dw TeruSama17Desc
+	dw RepellentDesc
+	dw HealingKitDesc
+	dw TrainingKitDesc
 	dw MysteryBerryDesc
 	dw DragonScaleDesc
 	dw BerserkGeneDesc
@@ -1012,3 +1012,23 @@ TeruSama32Desc:
 
 TeruSama33Desc:
 	db   "?@"
+
+CandyBagDesc:
+	db "Raises a #MON"
+	next "by one level.@"
+
+StatusKitDesc:
+	db "Inflicts a chosen"
+	next "status condition.@"
+
+RepellentDesc:
+	db "Repels wild"
+	next "#MON.@"
+
+HealingKitDesc:
+	db "Fully heals the"
+	next "entire party.@"
+
+TrainingKitDesc:
+	db   "Brings a #MON"
+	next "close to level-up.@"
