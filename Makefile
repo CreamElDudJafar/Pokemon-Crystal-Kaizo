@@ -73,11 +73,11 @@ RGBGFXFLAGS  ?= -Weverything
 	compare \
 	tools
 
-all: crystal
+all: crystal11 crystal11_debug
 crystal:         pokecrystal.gbc
 crystal11:       pokecrystal11.gbc
 crystal_au:      pokecrystal_au.gbc
-d:               pokecrystal_debug.gbc
+d:               pokecrystal11_debug.gbc
 crystal11_debug: pokecrystal11_debug.gbc
 crystal11_vc:    pokecrystal11.patch
 
@@ -120,9 +120,6 @@ compare: $(roms) $(patches)
 tools:
 	$(MAKE) -C tools/
 
-
-d:
-	$(MAKE) -C tools/
 
 RGBASMFLAGS = -Q8 -P includes.asm -Weverything -Wnumeric-string=2 -Wtruncation=1
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
