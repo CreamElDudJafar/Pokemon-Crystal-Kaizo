@@ -142,6 +142,11 @@ INCLUDE "engine/battle/start_battle.asm"
 INCLUDE "engine/gfx/place_graphic.asm"
 
 
+SECTION "Is Rocket Trainer", ROMX[$7df9], BANK[$0b]
+
+INCLUDE "engine/battle/is_rocket_trainer.asm"
+
+
 SECTION "Effect Commands", ROMX
 
 INCLUDE "engine/battle/effect_commands.asm"
