@@ -1234,7 +1234,7 @@ ElmGiveTicketText2:
 	done
 
 AideText_GiveStarterItems:
-	text "<PLAY_G>, take these"
+	text "<PLAY_G>, here are"
 	line "tools for your"
 	cont "journey."
 	done
