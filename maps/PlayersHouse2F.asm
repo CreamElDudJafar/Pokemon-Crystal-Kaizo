@@ -44,6 +44,12 @@ PlayersHouseRadioScript:
 if DEF(_DEBUG)
 	opentext
 	givemoney YOUR_MONEY, MAX_MONEY
+	giveitem POCKET_PC
+	giveitem STATUS_KIT
+	giveitem HEALING_KIT
+	giveitem CANDY_BAG
+	giveitem REPELLENT
+	giveitem TRAINING_KIT
 	giveitem BICYCLE
 	giveitem COIN_CASE
 	givecoins MAX_COINS

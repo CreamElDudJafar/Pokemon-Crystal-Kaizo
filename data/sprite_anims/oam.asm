@@ -149,6 +149,12 @@ SpriteAnimOAMData:
 	spriteanimoam $00, .OAMData_GameFreakLogo4_11        ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11
 	spriteanimoam $00, .OAMData_PartyMon                 ; SPRITE_ANIM_OAMSET_PARTY_MON_1
 	spriteanimoam $04, .OAMData_PartyMon                 ; SPRITE_ANIM_OAMSET_PARTY_MON_2
+	spriteanimoam $00, .OAMData_PCCursor                 ; SPRITE_ANIM_OAMSET_PC_CURSOR
+	spriteanimoam $00, .OAMData_PCCursorItem             ; SPRITE_ANIM_OAMSET_PC_CURSOR_ITEM
+	spriteanimoam $00, .OAMData_PCQuick                  ; SPRITE_ANIM_OAMSET_PC_QUICK
+	spriteanimoam $00, .OAMData_PCMode                   ; SPRITE_ANIM_OAMSET_PC_MODE
+	spriteanimoam $00, .OAMData_PCMode2                  ; SPRITE_ANIM_OAMSET_PC_MODE2
+	spriteanimoam $00, .OAMData_PCPack                   ; SPRITE_ANIM_OAMSET_PC_PACK
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -190,6 +196,12 @@ SpriteAnimOAMData:
 	dbsprite -1,  0,  0,  0, $00, 7 | OAM_YFLIP
 	dbsprite  0,  0,  0,  0, $00, 7 | OAM_XFLIP | OAM_YFLIP
 
+.OAMData_Unknown1: ; unreferenced
+	db 4
+	dbsprite -1, -1,  0,  0, $00, 0 | OAM_PRIO
+	dbsprite  0, -1,  0,  0, $00, 0 | OAM_XFLIP | OAM_PRIO
+	dbsprite -1,  0,  0,  0, $00, 0 | OAM_YFLIP | OAM_PRIO
+	dbsprite  0,  0,  0,  0, $00, 0 | OAM_XFLIP | OAM_YFLIP | OAM_PRIO
 
 .OAMData_TradePoofBubble:
 	db 16
@@ -308,6 +320,45 @@ SpriteAnimOAMData:
 	dbsprite  1,  0,  4,  4, $17, 0
 	dbsprite  1,  1,  4,  4, $18, 0
 
+.OAMData_Unknown2: ; unreferenced
+	db 36
+	dbsprite -3, -3,  0,  0, $00, 0
+	dbsprite -2, -3,  0,  0, $01, 0
+	dbsprite -1, -3,  0,  0, $02, 0
+	dbsprite  0, -3,  0,  0, $03, 0
+	dbsprite  1, -3,  0,  0, $04, 0
+	dbsprite  2, -3,  0,  0, $05, 0
+	dbsprite -3, -2,  0,  0, $06, 0
+	dbsprite -2, -2,  0,  0, $07, 0
+	dbsprite -1, -2,  0,  0, $08, 0
+	dbsprite  0, -2,  0,  0, $09, 0
+	dbsprite  1, -2,  0,  0, $0a, 0
+	dbsprite  2, -2,  0,  0, $0b, 0
+	dbsprite -3, -1,  0,  0, $0c, 0
+	dbsprite -2, -1,  0,  0, $0d, 0
+	dbsprite -1, -1,  0,  0, $0e, 0
+	dbsprite  0, -1,  0,  0, $0f, 0
+	dbsprite  1, -1,  0,  0, $10, 0
+	dbsprite  2, -1,  0,  0, $11, 0
+	dbsprite -3,  0,  0,  0, $12, 0
+	dbsprite -2,  0,  0,  0, $13, 0
+	dbsprite -1,  0,  0,  0, $14, 0
+	dbsprite  0,  0,  0,  0, $15, 0
+	dbsprite  1,  0,  0,  0, $16, 0
+	dbsprite  2,  0,  0,  0, $17, 0
+	dbsprite -3,  1,  0,  0, $18, 0
+	dbsprite -2,  1,  0,  0, $19, 0
+	dbsprite -1,  1,  0,  0, $1a, 0
+	dbsprite  0,  1,  0,  0, $1b, 0
+	dbsprite  1,  1,  0,  0, $1c, 0
+	dbsprite  2,  1,  0,  0, $1d, 0
+	dbsprite -3,  2,  0,  0, $1e, 0
+	dbsprite -2,  2,  0,  0, $1f, 0
+	dbsprite -1,  2,  0,  0, $20, 0
+	dbsprite  0,  2,  0,  0, $21, 0
+	dbsprite  1,  2,  0,  0, $22, 0
+	dbsprite  2,  2,  0,  0, $23, 0
+
 .OAMData_RedWalk:
 	db 4
 	dbsprite -1, -1,  0,  0, $00, PAL_OW_RED
@@ -324,38 +375,38 @@ SpriteAnimOAMData:
 
 .OAMData_PartyMonWithMail1:
 	db 4
-	dbsprite -1, -1,  0,  0, $00, -1
-	dbsprite  0, -1,  0,  0, $01, -1
+	dbsprite -1, -1,  0,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dbsprite  0, -1,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
 	dbsprite -1,  0,  0,  0, $08, PAL_ICON_RED
-	dbsprite  0,  0,  0,  0, $03, -1
+	dbsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithMail2:
 	db 4
-	dbsprite -1, -1,  0,  0, $04, -1
-	dbsprite  0, -1,  0,  0, $05, -1
+	dbsprite -1, -1,  0,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
+	dbsprite  0, -1,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
 	dbsprite -1,  0,  0,  0, $08, PAL_ICON_RED
-	dbsprite  0,  0,  0,  0, $07, -1
+	dbsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithItem1:
 	db 4
-	dbsprite -1, -1,  0,  0, $00, -1
-	dbsprite  0, -1,  0,  0, $01, -1
+	dbsprite -1, -1,  0,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dbsprite  0, -1,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
 	dbsprite -1,  0,  0,  0, $09, PAL_ICON_RED
-	dbsprite  0,  0,  0,  0, $03, -1
+	dbsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMonWithItem2:
 	db 4
-	dbsprite -1, -1,  0,  0, $04, -1
-	dbsprite  0, -1,  0,  0, $05, -1
+	dbsprite -1, -1,  0,  0, $04, SPRITEOAM_SKIP_PAL_APPLY
+	dbsprite  0, -1,  0,  0, $05, SPRITEOAM_SKIP_PAL_APPLY
 	dbsprite -1,  0,  0,  0, $09, PAL_ICON_RED
-	dbsprite  0,  0,  0,  0, $07, -1
+	dbsprite  0,  0,  0,  0, $07, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_PartyMon:
 	db 4
-	dbsprite -1, -1,  0,  0, $00, -1
-	dbsprite  0, -1,  0,  0, $01, -1
-	dbsprite -1,  0,  0,  0, $02, -1
-	dbsprite  0,  0,  0,  0, $03, -1
+	dbsprite -1, -1,  0,  0, $00, SPRITEOAM_SKIP_PAL_APPLY
+	dbsprite  0, -1,  0,  0, $01, SPRITEOAM_SKIP_PAL_APPLY
+	dbsprite -1,  0,  0,  0, $02, SPRITEOAM_SKIP_PAL_APPLY
+	dbsprite  0,  0,  0,  0, $03, SPRITEOAM_SKIP_PAL_APPLY
 
 .OAMData_GSIntroMagikarp:
 	db 6
@@ -1097,3 +1148,52 @@ SpriteAnimOAMData:
 	dbsprite -1,  0,  4,  0, $51, 1
 	dbsprite  0,  0,  4,  0, $52, 1
 	dbsprite  1,  0,  4,  0, $53, 1
+
+.OAMData_PCCursor:
+	db 8
+	; cursor
+	dbsprite  0,  0,  0,  0, $04, $1 | OAM_BANK1
+	dbsprite  1,  0,  0,  0, $04, $2 | OAM_BANK1 | OAM_XFLIP
+	dbsprite  0,  1,  0,  0, $05, $1 | OAM_BANK1
+	dbsprite  1,  1,  0,  0, $05, $2 | OAM_BANK1 | OAM_XFLIP
+	; icon
+	dbsprite  0,  1,  0,  2, $08, $3 | OAM_BANK1
+	dbsprite  1,  1,  0,  2, $09, $3 | OAM_BANK1
+	dbsprite  0,  2,  0,  2, $0a, $3 | OAM_BANK1
+	dbsprite  1,  2,  0,  2, $0b, $3 | OAM_BANK1
+
+.OAMData_PCCursorItem:
+	db 5
+	; cursor
+	dbsprite  0,  0,  0,  0, $04, $1 | OAM_BANK1
+	dbsprite  1,  0,  0,  0, $04, $2 | OAM_BANK1 | OAM_XFLIP
+	dbsprite  0,  1,  0,  0, $05, $1 | OAM_BANK1
+	dbsprite  1,  1,  0,  0, $05, $2 | OAM_BANK1 | OAM_XFLIP
+	; item
+	dbsprite  0,  2,  4,  0, $08, $0 | OAM_BANK1
+
+.OAMData_PCQuick:
+	db 4
+	; icon or item (only uses 1 sprite with the rest blank)
+	dbsprite  0,  0,  0,  0, $14, $5 | OAM_BANK1
+	dbsprite  1,  0,  0,  0, $15, $5 | OAM_BANK1
+	dbsprite  0,  1,  0,  0, $16, $5 | OAM_BANK1
+	dbsprite  1,  1,  0,  0, $17, $5 | OAM_BANK1
+
+.OAMData_PCMode:
+	db 3
+	dbsprite  2,  0,  0,  0, $26, $2 | OAM_BANK1
+	dbsprite  3,  0,  0,  0, $27, $2 | OAM_BANK1
+	dbsprite  4,  0,  0,  0, $28, $2 | OAM_BANK1
+
+.OAMData_PCMode2:
+	db 2
+	dbsprite  0,  0,  0,  0, $24, $2 | OAM_BANK1
+	dbsprite  1,  0,  0,  0, $25, $2 | OAM_BANK1
+
+.OAMData_PCPack:
+	db 4
+	dbsprite  0,  0,  0,  0, $2f, $4 | OAM_BANK1
+	dbsprite  1,  0,  0,  0, $30, $4 | OAM_BANK1
+	dbsprite  0,  1,  0,  0, $31, $4 | OAM_BANK1
+	dbsprite  1,  1,  0,  0, $32, $4 | OAM_BANK1

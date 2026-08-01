@@ -992,7 +992,7 @@ _LuckyNumberMatchPartyText::
 	line "with the ID number"
 
 	para "of @"
-	text_ram wStringBuffer1
+	text_decimal wBufferMonID, 2, 5
 	text " in"
 	line "your party."
 	prompt
@@ -1004,9 +1004,11 @@ _LuckyNumberMatchPCText::
 	line "with the ID number"
 
 	para "of @"
+	text_decimal wBufferMonID, 2, 5
+	text " in Box"
+	line "“@"
 	text_ram wStringBuffer1
-	text " in"
-	line "your PC BOX."
+	text "”."
 	prompt
 
 _CaughtAskNicknameText::
@@ -1391,6 +1393,11 @@ _PokemonAskSwapItemText::
 _ItemCantHeldText::
 	text "This item can't be"
 	line "held."
+	prompt
+
+_CantPlaceMailInStorageText::
+	text "Can't place MAIL in"
+	line "storage."
 	prompt
 
 _MailLoseMessageText::

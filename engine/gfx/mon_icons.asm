@@ -1,38 +1,8 @@
 LoadOverworldMonIcon:
 	ld a, e
-	ld b, d
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
-	cp ICON_UNOWN
-	jr nz, .not_unown
-
-	; Is it a Breedmon?
-	ld a, b
-	and a
-	jr z, .not_breedmon
-	
-	ld hl, wBreedMon1DVs
-	; Check which Breedmon we're using
-	dec a
-	jr z, .get_unown_letter
-	ld hl, wBreedMon2DVs
-.get_unown_letter
-	predef GetUnownLetter
-	ld a, [wUnownLetter]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, UnownIconPointers
-	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	lb bc, BANK("Unown Icons"), 8
-	ret
-
-.not_breedmon
-	ld a, [wCurIcon]
-.not_unown
+	; fallthrough
+_LoadOverworldMonIcon:
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -42,6 +12,7 @@ LoadOverworldMonIcon:
 	ld e, a
 	ld d, [hl]
 	jp GetIconBank
+
 SetMenuMonIconColor:
 	push hl
 	push de
@@ -267,13 +238,13 @@ LoadMenuMonIcon:
 	dw Mobile_InitPartyMenuBGPal71      ; MONICON_MOBILE2
 	dw Pokedex_InitAnimatedMonIcon      ; MONICON_UNUSED
 
-Unused_InitFastAnimatedMonIcon:
+Unused_GetPartyMenuMonIcon:
 	call InitPartyMenuIcon
-	call .SpawnItemIcon
+	call .GetPartyMonItemGFX
 	call SetPartyMonIconAnimSpeed
 	ret
 
-.SpawnItemIcon:
+.GetPartyMonItemGFX:
 	push bc
 	ldh a, [hObjectStructIndex]
 	ld hl, wPartyMon1Item
@@ -289,16 +260,16 @@ Unused_InitFastAnimatedMonIcon:
 	callfar ItemIsMail
 	pop bc
 	pop hl
-	jr c, .mail
-	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM_FAST
-	jr .got_frameset
-.mail
-	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL_FAST
+	jr c, .not_mail
+	ld a, $06
+	jr .got_tile
+.not_mail
+	ld a, $05
 	; fallthrough
 
 .no_item
-	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_FAST
-.got_frameset
+	ld a, $04
+.got_tile
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -365,11 +336,11 @@ PartyMenu_InitAnimatedMonIcon:
 	pop hl
 	jr c, .mail
 	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	jr .got_frameset
+	jr .okay
 
 .mail
 	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL
-.got_frameset
+.okay
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -385,14 +356,7 @@ InitPartyMenuIcon:
 	ld d, 0
 	add hl, de
 	ld a, [hl]
-	push hl
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
-	pop hl
-	ld a, MON_DVS
-	call GetPartyParamLocation
-	ld e, l
-	ld d, h
 	call GetMemIconGFX
 	ldh a, [hObjectStructIndex]
 ; y coord
@@ -449,9 +413,6 @@ NamingScreen_InitAnimatedMonIcon:
 	ld hl, wTempMonDVs
 	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
-	push hl
-	call ReadMonMenuIcon
-	pop de
 	ld [wCurIcon], a
 	xor a
 	call GetIconGFX
@@ -468,9 +429,6 @@ MoveList_InitAnimatedMonIcon:
 	call GetPartyParamLocation
 	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
-	push hl
-	call ReadMonMenuIcon
-	pop de
 	ld [wCurIcon], a
 	xor a
 	call GetIconGFX
@@ -535,11 +493,10 @@ Pokedex_InitAnimatedMonIcon:
 
 Trade_LoadMonIconGFX:
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
+	ld [wCurPartySpecies], a
 	ld [wCurIcon], a
 	ld a, $62
 	ld [wCurIconTile], a
-	ld de, wTempMonDVs
 	call GetMemIconGFX
 	ret
 
@@ -550,25 +507,31 @@ GetSpeciesIcon:
 	call GetPartyParamLocation
 	call SetMenuMonIconColor
 	ld a, [wTempIconSpecies]
-	push hl
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
-	pop hl
 	pop de
 	ld a, e
-	ld e, l
-	ld d, h
 	call GetIconGFX
 	ret
 
 FlyFunction_GetMonIcon:
 	push de
 	ld a, [wTempIconSpecies]
-	call ReadMonMenuIcon
 	ld [wCurIcon], a
 	pop de
 	ld a, e
 	call GetIcon_a
+; todo: made up this label location... fix this!
+; fallthrough
+SetOWFlyMonColor:
+	; Edit the OBJ 0 palette so that the cursor Pokémon has the right colors.
+	ld a, MON_DVS
+	call GetPartyParamLocation
+	call GetMenuMonIconPalette
+	add a
+	add a
+	add a
+	ld e, a
+	farcall SetFirstOBJPalette
 	ret
 
 GetMemIconGFX:
@@ -608,35 +571,12 @@ rept 4
 	add hl, hl
 endr
 
-	push de
 	ld de, vTiles0
 	add hl, de
-	pop de
 	push hl
 
-; The icons are contiguous, in order and of the same
-; size, so the pointer table is somewhat redundant.
-	push hl
 	ld a, [wCurIcon]
-	cp ICON_UNOWN
-	jr nz, .not_unown
-	ld l, e
-	ld h, d
-	predef GetUnownLetter
-	ld a, [wUnownLetter]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, UnownIconPointers
-	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	lb bc, BANK("Unown Icons"), 8
-	pop hl
-	jr .continue
-
-.not_unown
+	push hl
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -648,7 +588,6 @@ endr
 	pop hl
 
 	call GetIconBank
-.continue
 	call GetGFXUnlessMobile
 
 	pop hl
@@ -656,7 +595,7 @@ endr
 
 GetIconBank:
 	ld a, [wCurIcon]
-	cp ICON_MAGIKARP ; first icon in Icons2
+	cp MAGIKARP ; first species in "Mon Icons 2"
 	lb bc, BANK("Mon Icons 1"), 8
 	ret c
 	ld b, BANK("Mon Icons 2")
@@ -667,6 +606,25 @@ GetGFXUnlessMobile:
 	cp LINK_MOBILE
 	jp nz, Request2bpp
 	jp Get2bppViaHDMA
+
+
+GetStorageIcon_a:
+; Load frame 1 icon graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
+	ld h, 0
+rept 4
+	add hl, hl
+endr
+	ld de, vTiles0
+	add hl, de
+	; fallthrough
+GetStorageIcon:
+	push hl
+	ld a, [wCurIcon]
+	call _LoadOverworldMonIcon
+	ld c, 4
+	pop hl
+	newfarjp BillsPC_SafeGet2bpp
 
 FreezeMonIcons:
 	ld hl, wSpriteAnimationStructs
@@ -753,26 +711,6 @@ HoldSwitchmonIcon:
 	jr nz, .loop
 	ret
 
-ReadMonMenuIcon:
-	cp EGG
-	jr z, .egg
-	dec a
-	ld hl, MonMenuIcons
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ret
-.egg
-	ld a, ICON_EGG
-	ret
-
-INCLUDE "data/pokemon/menu_icons.asm"
-
 INCLUDE "data/pokemon/menu_icon_pals.asm"
 
-INCLUDE "data/icon_pointers.asm"
-
-INCLUDE "data/unown_icon_pointers.asm"
-
-INCLUDE "gfx/icons.asm"
+INCLUDE "data/pokemon/icon_pointers.asm"
