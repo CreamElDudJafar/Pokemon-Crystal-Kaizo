@@ -192,6 +192,12 @@ BillsPC_RefreshTheme:
 	jr _BillsPC_GetCGBLayout
 
 UseBillsPC:
+	call ClearPalettes
+
+.wait_for_palettes
+	ldh a, [hCGBPalUpdate]
+	and a
+	jr nz, .wait_for_palettes
 	call ClearTilemap
 	call ClearPalettes
 	newfarcall WipeAttrmap

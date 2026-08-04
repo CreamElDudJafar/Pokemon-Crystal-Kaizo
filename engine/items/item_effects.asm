@@ -2103,7 +2103,7 @@ RepellentEffect:
 	jp nz, PrintText
 	ld a, 250
 	ld [wRepelEffect], a
-	ld a, MAX_REPEL
+	ld a, REPELLENT
 	ld [wRepelType], a
 	ld hl, ItemUsedText
 	call PrintText
