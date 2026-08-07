@@ -25,5 +25,7 @@ BallColors:
 	RGB 31,31,31, 30,11,22
 	db PARK_BALL
 	RGB 31,31,31, 18,18,05
+	db SAFARI_BALL
+	RGB 31,31,31, 04,17,04
 	db -1 ; end
 	RGB 31,31,31, 16,16,16

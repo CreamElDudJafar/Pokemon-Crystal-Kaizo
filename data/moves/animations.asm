@@ -282,7 +282,26 @@ BattleAnimations::
 	dw BattleAnim_Wobble
 	dw BattleAnim_Shake
 	dw BattleAnim_HitConfusion
+	dw BattleAnim_SafariThrowRock
+	dw BattleAnim_SafariThrowBait
 	assert_table_length NUM_BATTLE_ANIMS + 1
+
+BattleAnim_SafariThrowRock:
+	anim_2gfx BATTLE_ANIM_GFX_HIT, BATTLE_ANIM_GFX_ROCKS
+	anim_sound 6, 2, SFX_BONE_CLUB
+	anim_obj BATTLE_ANIM_OBJ_SAFARI_ROCK, 64, 84, $10
+	anim_wait 36
+	anim_sound 0, 1, SFX_POUND
+	anim_obj BATTLE_ANIM_OBJ_HIT_SMALL_YFIX, 136, 52, $0
+	anim_wait 24
+	anim_ret
+
+BattleAnim_SafariThrowBait:
+	anim_1gfx BATTLE_ANIM_GFX_ROCKS
+	anim_sound 6, 2, SFX_BONE_CLUB
+	anim_obj BATTLE_ANIM_OBJ_SAFARI_BAIT, 64, 92, $10
+	anim_wait 56
+	anim_ret
 
 BattleAnim_Dummy:
 BattleAnim_MirrorMove:
@@ -306,7 +325,21 @@ BattleAnim_ThrowPokeBall:
 	anim_if_param_equal MASTER_BALL, .MasterBall
 	anim_if_param_equal ULTRA_BALL, .UltraBall
 	anim_if_param_equal GREAT_BALL, .GreatBall
+	anim_if_param_equal SAFARI_BALL, .SafariBall
 	; any other ball
+	anim_2gfx BATTLE_ANIM_GFX_POKE_BALL, BATTLE_ANIM_GFX_SMOKE
+	anim_sound 6, 2, SFX_THROW_BALL
+	anim_obj BATTLE_ANIM_OBJ_POKE_BALL, 68, 92, $40
+	anim_wait 36
+	anim_obj BATTLE_ANIM_OBJ_POKE_BALL, 136, 65, $0
+	anim_setobj $2, $7
+	anim_wait 16
+	anim_sound 0, 1, SFX_BALL_POOF
+	anim_obj BATTLE_ANIM_OBJ_BALL_POOF, 136, 64, $10
+	anim_wait 16
+	anim_jump .Shake
+
+.SafariBall:
 	anim_2gfx BATTLE_ANIM_GFX_POKE_BALL, BATTLE_ANIM_GFX_SMOKE
 	anim_sound 6, 2, SFX_THROW_BALL
 	anim_obj BATTLE_ANIM_OBJ_POKE_BALL, 68, 92, $40

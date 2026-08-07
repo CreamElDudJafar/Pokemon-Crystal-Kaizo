@@ -1267,10 +1267,22 @@ HeadbuttScript:
 	callasm TreeMonEncounter
 	iffalse .no_battle
 	closetext
+	checkflag ENGINE_SAFARI_ZONE
+	iffalse .normal_battle
+	writecode VAR_BATTLETYPE, BATTLETYPE_SAFARI
+.normal_battle
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
+	checkflag ENGINE_SAFARI_ZONE
+	iffalse .done
+	copybytetovar wSafariBallsRemaining
+	iffalse .safari_out_of_balls
+.done
 	end
+
+.safari_out_of_balls
+	farjump SafariZoneOutOfBallsScript
 
 .no_battle
 	writetext HeadbuttNothingText
@@ -1470,7 +1482,12 @@ FishFunction:
 	ld [wTempWildMonSpecies], a
 	ld a, e
 	ld [wCurPartyLevel], a
+	ld hl, wStatusFlags2
+	bit STATUSFLAGS2_SAFARI_GAME_F, [hl]
 	ld a, BATTLETYPE_FISH
+	jr z, .got_battle_type
+	ld a, BATTLETYPE_SAFARI
+.got_battle_type
 	ld [wBattleType], a
 	ld a, $2
 	ret
@@ -1541,7 +1558,15 @@ Script_GotABite:
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
+	checkflag ENGINE_SAFARI_ZONE
+	iffalse .NoSafariGame
+	copybytetovar wSafariBallsRemaining
+	iffalse .SafariOutOfBalls
+.NoSafariGame
 	end
+
+.SafariOutOfBalls:
+	farjump SafariZoneOutOfBallsScript
 
 .Movement_NotFacingUp:
 	fish_got_bite

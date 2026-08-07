@@ -21,8 +21,14 @@ CeladonCity_Blocks:
 SaffronCity_Blocks:
 	INCBIN "maps/SaffronCity.blk"
 
-Route2_Blocks:
-	INCBIN "maps/Route2.blk"
+Route2South_Blocks:
+	INCBIN "maps/Route2South.blk"
+
+Route2North_Blocks:
+	INCBIN "maps/Route2North.blk"
+
+ViridianForest_Blocks:
+	INCBIN "maps/ViridianForest.blk"
 
 ElmsHouse_Blocks:
 	INCBIN "maps/ElmsHouse.blk"
@@ -174,6 +180,8 @@ Route34IlexForestGate_Blocks:
 Route6SaffronGate_Blocks:
 Route40BattleTowerGate_Blocks:
 Route2Gate_Blocks:
+ViridianForestGateN_Blocks:
+ViridianForestGateS_Blocks:
 Route29Route46Gate_Blocks:
 Route5SaffronGate_Blocks:
 	INCBIN "maps/NorthSouthGate.blk"
@@ -822,6 +830,15 @@ Route39Barn_Blocks:
 VictoryRoad_Blocks:
 	INCBIN "maps/VictoryRoad.blk"
 
+CeruleanCave1F_Blocks:
+	INCBIN "maps/CeruleanCave1F.blk"
+
+CeruleanCave2F_Blocks:
+	INCBIN "maps/CeruleanCave2F.blk"
+
+CeruleanCaveB1F_Blocks:
+	INCBIN "maps/CeruleanCaveB1F.blk"
+
 Route23_Blocks:
 	INCBIN "maps/Route23.blk"
 
@@ -902,5 +919,39 @@ BattleTowerOutside_Blocks:
 
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"
+
+ENDSECTION
+
+SECTION "Safari Zone Map Blocks", ROMX
+
+SafariZoneKantoEntrance_Blocks:
+	INCBIN "maps/SafariZoneKantoEntrance.blk"
+
+SafariZoneKantoArea1_Blocks:
+	INCBIN "maps/SafariZoneKantoArea1.blk"
+
+SafariZoneKantoArea2_Blocks:
+	INCBIN "maps/SafariZoneKantoArea2.blk"
+
+SafariZoneKantoArea3_Blocks:
+	INCBIN "maps/SafariZoneKantoArea3.blk"
+
+SafariZoneKantoArea4_Blocks:
+	INCBIN "maps/SafariZoneKantoArea4.blk"
+
+SafariKantoRestHouseArea1_Blocks:
+	INCBIN "maps/SafariKantoRestHouseArea1.blk"
+
+SafariKantoRestHouseArea2_Blocks:
+	INCBIN "maps/SafariKantoRestHouseArea2.blk"
+
+SafariKantoRestHouseArea3_Blocks:
+	INCBIN "maps/SafariKantoRestHouseArea3.blk"
+
+SafariKantoRestHouseArea4_Blocks:
+	INCBIN "maps/SafariKantoRestHouseArea4.blk"
+
+SafariKantoSecretHouse_Blocks:
+	INCBIN "maps/SafariKantoSecretHouse.blk"
 
 ENDSECTION

@@ -16,6 +16,8 @@ InitMapNameSign::
 	ld [wCurLandmark], a
 	call .CheckNationalParkGate
 	jr z, .gate
+	call .CheckSafariKantoEntrance
+	jr z, .gate
 
 	call GetMapEnvironment
 	cp GATE
@@ -95,6 +97,14 @@ InitMapNameSign::
 	cp MAP_ROUTE_35_NATIONAL_PARK_GATE
 	ret z
 	cp MAP_ROUTE_36_NATIONAL_PARK_GATE
+	ret
+
+.CheckSafariKantoEntrance:
+	ld a, [wMapGroup]
+	cp GROUP_SAFARI_ZONE_KANTO_ENTRANCE
+	ret nz
+	ld a, [wMapNumber]
+	cp MAP_SAFARI_ZONE_KANTO_ENTRANCE
 	ret
 
 PlaceMapNameSign::

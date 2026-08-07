@@ -359,6 +359,7 @@ INCLUDE "engine/pokemon/mail_2.asm"
 SECTION "Phone Scripts 2", ROMX
 
 INCLUDE "engine/events/std_scripts.asm"
+INCLUDE "engine/events/safari_zone/safari.asm"
 INCLUDE "engine/events/init_events.asm"
 INCLUDE "engine/phone/scripts/unused.asm"
 INCLUDE "engine/phone/scripts/mom.asm"

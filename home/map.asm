@@ -139,10 +139,11 @@ LoadMetatiles::
 	ld e, l
 	ld d, h
 	; Set hl to the address of the current metatile data ([wTilesetBlocksAddress] + (a) tiles).
-; BUG: LoadMetatiles wraps around past 128 blocks (see docs/bugs_and_glitches.md)
-	add a
+	; Multiply the full 8-bit block ID by METATILE_LENGTH (16)
+	; without losing bit 7. This supports block IDs $80-$ff.
 	ld l, a
 	ld h, 0
+	add hl, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl

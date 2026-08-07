@@ -495,7 +495,7 @@ wCurEnemyMoveNum:: db
 wEnemyHPAtTimeOfPlayerSwitch:: dw
 wPayDayMoney:: ds 3
 
-	ds 1
+wSafariMonAngerCount:: db
 wSafariMonEating:: db
 	ds 1
 wEnemyBackupDVs:: dw ; used when enemy is transformed
@@ -3139,6 +3139,7 @@ wMahoganyTownSceneID::                            db
 wRoute42SceneID::                                 db
 wCianwoodCitySceneID::                            db
 wBattleTower1FSceneID::                           db
+wSafariZoneKantoEntranceSceneID::                 db
 wBattleTowerBattleRoomSceneID::                   db
 wBattleTowerElevatorSceneID::                     db
 wBattleTowerHallwaySceneID::                      db

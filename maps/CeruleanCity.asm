@@ -135,6 +135,9 @@ CeruleanPoliceSign:
 CeruleanCapeSign:
 	jumptext CeruleanCapeSignText
 
+CeruleanCaveSign:
+	jumptext CeruleanCaveSignText
+
 CeruleanLockedDoor:
 	jumptext CeruleanLockedDoorText
 
@@ -269,6 +272,10 @@ CeruleanCapeSignText:
 	line "AHEAD"
 	done
 
+CeruleanCaveSignText:
+	text "CERULEAN CAVE"
+	done
+
 CeruleanLockedDoorText:
 	text "It's locked…"
 	done
@@ -284,9 +291,12 @@ CeruleanCity_MapEvents:
 	warp_event 30, 23, CERULEAN_GYM, 1
 	warp_event 25, 29, CERULEAN_MART, 2
 
+	warp_event  8,  3, CERULEAN_CAVE_1F, 1
+
 	def_coord_events
 
 	def_bg_events
+	bg_event  9,  5, BGEVENT_READ, CeruleanCaveSign
 	bg_event 21, 23, BGEVENT_READ, CeruleanCitySign
 	bg_event 27, 25, BGEVENT_READ, CeruleanGymSign
 	bg_event 15, 31, BGEVENT_READ, CeruleanBikeShopSign

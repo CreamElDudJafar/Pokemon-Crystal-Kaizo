@@ -30,6 +30,7 @@ OutdoorSprites:
 	dw NewBarkGroupSprites
 	dw SaffronGroupSprites
 	dw CherrygroveGroupSprites
+	dw FuchsiaGroupSprites ; 27 (Safari Zone)
 	assert_table_length NUM_MAP_GROUPS
 
 ; Route1 and ViridianCity are connected

@@ -8,6 +8,7 @@ MACRO tilepal
 	endr
 ENDM
 
+TilesetKantoRoute2PalMap:
 TilesetKantoPalMap:
 INCLUDE "gfx/tilesets/kanto_palette_map.asm"
 

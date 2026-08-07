@@ -227,7 +227,7 @@ StartTrainerBattle_DetermineWhichAnimation:
 	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .cave
-	cp ENVIRONMENT_5
+	cp SAFARI_ZONE_ENV
 	jr z, .cave
 	cp DUNGEON
 	jr z, .cave

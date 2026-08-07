@@ -37,6 +37,7 @@ _AnimateTileset::
 
 Tileset0Anim:
 TilesetJohtoModernAnim:
+TilesetKantoRoute2Anim:
 TilesetKantoAnim:
 	dw vTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
@@ -1029,3 +1030,4 @@ WhirlpoolTiles1: INCBIN "gfx/tilesets/whirlpool/1.2bpp"
 WhirlpoolTiles2: INCBIN "gfx/tilesets/whirlpool/2.2bpp"
 WhirlpoolTiles3: INCBIN "gfx/tilesets/whirlpool/3.2bpp"
 WhirlpoolTiles4: INCBIN "gfx/tilesets/whirlpool/4.2bpp"
+

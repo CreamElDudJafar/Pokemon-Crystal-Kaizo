@@ -140,7 +140,7 @@
 	const STAR_PIECE   ; 84
 	const BASEMENT_KEY ; 85
 	const PASS         ; 86
-	const ITEM_87      ; 87
+	const SAFARI_BALL      ; 87
 	const ITEM_88      ; 88
 	const ITEM_89      ; 89
 	const CHARCOAL     ; 8a
@@ -315,6 +315,6 @@ DEF USE_SCRIPT_VAR EQU $00
 DEF ITEM_FROM_MEM  EQU $ff
 
 ; leftovers from red
-DEF SAFARI_BALL    EQU $08 ; MOON_STONE
+DEF SAFARI_BALL_RED EQU $08 ; MOON_STONE
 DEF MOON_STONE_RED EQU $0a ; BURN_HEAL
 DEF FULL_HEAL_RED  EQU $34 ; X_SPEED

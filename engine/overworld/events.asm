@@ -35,41 +35,6 @@ CheckEnabledMapEventsBit5:
 	bit PLAYEREVENTS_UNUSED, [hl]
 	ret
 
-DisableWarpsConnections: ; unreferenced
-	ld hl, wEnabledPlayerEvents
-	res PLAYEREVENTS_WARPS_AND_CONNECTIONS, [hl]
-	ret
-
-DisableCoordEvents: ; unreferenced
-	ld hl, wEnabledPlayerEvents
-	res PLAYEREVENTS_COORD_EVENTS, [hl]
-	ret
-
-DisableStepCount: ; unreferenced
-	ld hl, wEnabledPlayerEvents
-	res PLAYEREVENTS_COUNT_STEPS, [hl]
-	ret
-
-DisableWildEncounters: ; unreferenced
-	ld hl, wEnabledPlayerEvents
-	res PLAYEREVENTS_WILD_ENCOUNTERS, [hl]
-	ret
-
-EnableWarpsConnections: ; unreferenced
-	ld hl, wEnabledPlayerEvents
-	set PLAYEREVENTS_WARPS_AND_CONNECTIONS, [hl]
-	ret
-
-EnableCoordEvents: ; unreferenced
-	ld hl, wEnabledPlayerEvents
-	set PLAYEREVENTS_COORD_EVENTS, [hl]
-	ret
-
-EnableStepCount: ; unreferenced
-	ld hl, wEnabledPlayerEvents
-	set PLAYEREVENTS_COUNT_STEPS, [hl]
-	ret
-
 EnableWildEncounters:
 	ld hl, wEnabledPlayerEvents
 	set PLAYEREVENTS_WILD_ENCOUNTERS, [hl]
@@ -130,11 +95,6 @@ EnterMap:
 	ldh [hMapEntryMethod], a
 	ld a, MAPSTATUS_HANDLE
 	ld [wMapStatus], a
-	ret
-
-UnusedWait30Frames: ; unreferenced
-	ld c, 30
-	call DelayFrames
 	ret
 
 HandleMap:
@@ -481,11 +441,6 @@ CheckTimeEvents:
 	ld a, BANK(BugCatchingContestOverScript)
 	ld hl, BugCatchingContestOverScript
 	call CallScript
-	scf
-	ret
-
-.hatch ; unreferenced
-	ld a, PLAYEREVENT_HATCH
 	scf
 	ret
 
@@ -920,6 +875,8 @@ CountStep:
 	jr c, .doscript
 
 .skip_poison
+	call DoSafariStep
+	jr c, .doscript
 	farcall DoBikeStep
 
 .done
@@ -936,8 +893,29 @@ CountStep:
 	scf
 	ret
 
-.whiteout ; unreferenced
-	ld a, PLAYEREVENT_WHITEOUT
+DoSafariStep:
+	ld a, [wStatusFlags2]
+	bit STATUSFLAGS2_SAFARI_GAME_F, a
+	jr z, .NoSafariActive
+	ld a, [wSafariTimeRemaining]
+	ld b, a
+	ld a, [wSafariTimeRemaining + 1]
+	ld c, a
+	or b
+	jr z, SafariZoneGameOver
+	dec bc
+	ld a, b
+	ld [wSafariTimeRemaining], a
+	ld a, c
+	ld [wSafariTimeRemaining + 1], a
+.NoSafariActive:
+	xor a
+	ret
+
+SafariZoneGameOver:
+	ld a, BANK(SafariZoneGameOverScript)
+	ld hl, SafariZoneGameOverScript
+	call CallScript
 	scf
 	ret
 
@@ -1006,9 +984,6 @@ PlayerEventScriptPointers:
 	assert_table_length NUM_PLAYER_EVENTS + 1
 
 InvalidEventScript:
-	end
-
-UnusedPlayerEventScript: ; unreferenced
 	end
 
 HatchEggScript:
@@ -1153,9 +1128,16 @@ RandomEncounter::
 	ld hl, wStatusFlags2
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	jr nz, .bug_contest
+	bit STATUSFLAGS2_SAFARI_GAME_F, [hl]
+	jr nz, .safari
 	farcall TryWildEncounter
 	jr nz, .nope
 	jr .ok
+
+.safari
+	farcall TryWildEncounter
+	jr nz, .nope
+	jr .ok_safari
 
 .bug_contest
 	call _TryWildEncounter_BugContest
@@ -1175,6 +1157,11 @@ RandomEncounter::
 .ok_bug_contest
 	ld a, BANK(BugCatchingContestBattleScript)
 	ld hl, BugCatchingContestBattleScript
+	jr .done
+
+.ok_safari
+	ld a, BANK(SafariZoneBattleScript)
+	ld hl, SafariZoneBattleScript
 	jr .done
 
 .done

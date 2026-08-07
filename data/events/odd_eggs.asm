@@ -7,6 +7,8 @@ MACRO odd_egg_prob
 	dw odd_egg_prob_total * $ffff / 100
 ENDM
 
+; 14 possible Odd Egg Pokemon, each with approximately a 7.14% chance.
+; $FFFF (65535) represents 100% of the probability range.
 OddEggProbabilities:
 ; entries correspond to OddEggs (below)
 	table_width 2

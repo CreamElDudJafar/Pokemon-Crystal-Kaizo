@@ -148,7 +148,7 @@ ItemEffects:
 	dw NoEffect            ; STAR_PIECE
 	dw BasementKeyEffect   ; BASEMENT_KEY
 	dw NoEffect            ; PASS
-	dw NoEffect            ; ITEM_87
+	dw PokeBallEffect      ; SAFARI_BALL
 	dw NoEffect            ; ITEM_88
 	dw NoEffect            ; ITEM_89
 	dw NoEffect            ; CHARCOAL
@@ -226,9 +226,13 @@ PokeBallEffect:
 ; BUG: Using a Park Ball in non-Contest battles has a corrupt animation (see docs/bugs_and_glitches.md)
 	xor a
 	ld [wWildMon], a
+	ld a, [wBattleType]
+	cp BATTLETYPE_SAFARI
+	jr z, .skip_return_to_battle
 	ld a, [wCurItem]
 	cp PARK_BALL
 	call nz, ReturnToBattle_UseBall
+.skip_return_to_battle
 
 	ld hl, wOptions
 	res NO_TEXT_SCROLL, [hl]
@@ -709,6 +713,8 @@ PokeBallEffect:
 	ret z
 	cp BATTLETYPE_CONTEST
 	jr z, .used_park_ball
+	cp BATTLETYPE_SAFARI
+	jr z, .used_safari_ball
 
 	ld a, [wWildMon]
 	and a
@@ -725,6 +731,11 @@ PokeBallEffect:
 
 .used_park_ball
 	ld hl, wParkBallsRemaining
+	dec [hl]
+	ret
+
+.used_safari_ball
+	ld hl, wSafariBallsRemaining
 	dec [hl]
 	ret
 

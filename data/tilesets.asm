@@ -50,4 +50,5 @@ Tilesets::
 	tileset TilesetKabutoWordRoom
 	tileset TilesetOmanyteWordRoom
 	tileset TilesetAerodactylWordRoom
+	tileset TilesetKantoRoute2
 	assert_table_length NUM_TILESETS + 1

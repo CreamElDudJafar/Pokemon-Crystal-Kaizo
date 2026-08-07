@@ -35,8 +35,8 @@ SafariZoneOfficeSign:
 WardensHomeSign:
 	jumptext WardensHomeSignText
 
-SafariZoneClosedSign:
-	jumptext SafariZoneClosedSignText
+SafariZoneKantoSign:
+	jumptext SafariZoneKantoSignText
 
 NoLitteringSign:
 	jumptext NoLitteringSignText
@@ -106,13 +106,9 @@ WardensHomeSignText:
 	line "WARDEN'S HOME"
 	done
 
-SafariZoneClosedSignText:
-	text "The WARDEN is"
-	line "traveling abroad."
-
-	para "Therefore, the"
-	line "SAFARI ZONE is"
-	cont "closed."
+SafariZoneKantoSignText:
+	text "SAFARI ZONE"
+	line "#MON-U-CATCH!"
 	done
 
 NoLitteringSignText:
@@ -132,7 +128,7 @@ FuchsiaCity_MapEvents:
 	warp_event 11, 27, BILLS_OLDER_SISTERS_HOUSE, 1
 	warp_event 19, 27, FUCHSIA_POKECENTER_1F, 1
 	warp_event 27, 27, SAFARI_ZONE_WARDENS_HOME, 1
-	warp_event 18,  3, SAFARI_ZONE_FUCHSIA_GATE_BETA, 3 ; inaccessible
+	warp_event 18,  3, SAFARI_ZONE_KANTO_ENTRANCE, 3
 	warp_event 37, 22, ROUTE_15_FUCHSIA_GATE, 1
 	warp_event 37, 23, ROUTE_15_FUCHSIA_GATE, 2
 	warp_event  7, 35, ROUTE_19_FUCHSIA_GATE, 1
@@ -145,7 +141,7 @@ FuchsiaCity_MapEvents:
 	bg_event  5, 29, BGEVENT_READ, FuchsiaGymSign
 	bg_event 25, 15, BGEVENT_READ, SafariZoneOfficeSign
 	bg_event 27, 29, BGEVENT_READ, WardensHomeSign
-	bg_event 17,  5, BGEVENT_READ, SafariZoneClosedSign
+	bg_event 17,  5, BGEVENT_READ, SafariZoneKantoSign
 	bg_event 13, 15, BGEVENT_READ, NoLitteringSign
 	bg_event 20, 27, BGEVENT_READ, FuchsiaCityPokecenterSign
 	bg_event  6, 13, BGEVENT_READ, FuchsiaCityMartSign

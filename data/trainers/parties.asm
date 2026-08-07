@@ -1912,6 +1912,27 @@ BugCatcherGroup:
 	db 26, ARIADOS
 	db -1 ; end
 
+	; BUG_CATCHER (20)
+	db "ABNER@", TRAINERTYPE_NORMAL
+	db 103, BEEDRILL
+	db 106, QUAGSIRE
+	db 100, ARIADOS
+	db -1 ; end
+
+	; BUG_CATCHER (21)
+	db "ELLIS@", TRAINERTYPE_NORMAL
+	db 102, YANMA
+	db 107, LANTURN
+	db 104, PARASECT
+	db -1 ; end
+
+	; BUG_CATCHER (22)
+	db "STACEY@", TRAINERTYPE_NORMAL
+	db 109, TYRANITAR
+	db 105, FORRETRESS
+	db 108, LEDIAN
+	db -1 ; end
+
 FisherGroup:
 	; FISHER (1)
 	db "JUSTIN@", TRAINERTYPE_NORMAL

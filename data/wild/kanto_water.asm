@@ -170,4 +170,51 @@ KantoWaterWildMons:
 	db 95, TENTACRUEL
 	end_water_wildmons
 
+
+	def_water_wildmons CERULEAN_CAVE_1F
+	db 100 ; encounter rate
+	db 100, LAPRAS
+	db 100, KINGDRA
+	db 100, DRAGONITE
+	end_water_wildmons
+	def_water_wildmons CERULEAN_CAVE_B1F
+	db 100 ; encounter rate
+	db 100, KINGDRA
+	db 100, LAPRAS
+	db 100, DRAGONITE
+	end_water_wildmons
+
+
+
+	def_water_wildmons SAFARI_ZONE_KANTO_AREA_1
+	db 100 ; encounter rate
+	db 100, POLITOED
+	db 100, SEADRA
+	db 100, AZUMARILL
+	end_water_wildmons
+
+
+	def_water_wildmons SAFARI_ZONE_KANTO_AREA_2
+	db 100 ; encounter rate
+	db 100, SLOWKING
+	db 100, MANTINE
+	db 100, OCTILLERY
+	end_water_wildmons
+
+
+	def_water_wildmons SAFARI_ZONE_KANTO_AREA_3
+	db 100 ; encounter rate
+	db 100, DRAGONAIR
+	db 100, QWILFISH
+	db 100, LANTURN
+	end_water_wildmons
+
+
+	def_water_wildmons SAFARI_ZONE_KANTO_AREA_4
+	db 100 ; encounter rate
+	db 100, LAPRAS
+	db 100, VAPOREON
+	db 100, KINGDRA
+	end_water_wildmons
+
 	db -1 ; end

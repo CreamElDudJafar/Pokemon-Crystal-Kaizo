@@ -22,6 +22,8 @@ FishGroups:
 	fishgroup 50 percent + 1, .Qwilfish_Old,         .Qwilfish_Good,         .Qwilfish_Super
 	fishgroup 50 percent + 1, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
 	fishgroup 50 percent + 1, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
+	fishgroup 50 percent + 1, .CeruleanCave_Old,     .CeruleanCave_Good,     .CeruleanCave_Super
+	fishgroup 50 percent + 1, .SafariZone_Old,       .SafariZone_Good,       .SafariZone_Super
 	assert_table_length NUM_FISHGROUPS
 
 .Shore_Old:
@@ -207,6 +209,36 @@ FishGroups:
 	db  90 percent + 1, SEAKING,    100
 	db 100 percent,     OCTILLERY,  100
 
+.CeruleanCave_Old:
+	db  70 percent + 1, GYARADOS,   100
+	db  85 percent + 1, LAPRAS,     100
+	db 100 percent,     KINGDRA,    100
+.CeruleanCave_Good:
+	db  35 percent,     LAPRAS,     100
+	db  70 percent,     KINGDRA,    100
+	db  90 percent + 1, SLOWKING,   100
+	db 100 percent,     CLOYSTER,   100
+.CeruleanCave_Super:
+	db  40 percent,     KINGDRA,    100
+	db  70 percent,     LAPRAS,     100
+	db  90 percent + 1, DRAGONITE,  100
+	db 100 percent,     GYARADOS,   100
+
+.SafariZone_Old:
+	db  70 percent + 1, DRATINI,    100
+	db  85 percent + 1, QWILFISH,   100
+	db 100 percent,     REMORAID,   100
+.SafariZone_Good:
+	db  35 percent,     DRAGONAIR,  100
+	db  70 percent,     MANTINE,    100
+	db  90 percent + 1, SEADRA,     100
+	db 100 percent,     LANTURN,    100
+.SafariZone_Super:
+	db  40 percent,     LAPRAS,     100
+	db  70 percent,     KINGDRA,    100
+	db  90 percent + 1, POLITOED,   100
+	db 100 percent,     SLOWKING,   100
+
 TimeFishGroups:
 	;  day              nite
 	db CORSOLA,    48,  STARYU,     48 ; 0
@@ -247,6 +279,8 @@ FishGroups_Names::
  	dw Group11_Name
  	dw Group12_Name
  	dw Group13_Name
+	dw Group14_Name
+	dw Group15_Name
  	assert_table_length NUM_FISHGROUPS ; (13, NONE is not included in the count)
  
  Group1_Name:
@@ -277,6 +311,10 @@ FishGroups_Names::
  Group13_Name:
  	db " ROUTE 12@"
  	; db " QWILFISH 2@"
+Group14_Name:
+	db " CERULEAN@"
+Group15_Name:
+	db " SAFARI@"
  
  GetFishGroupName:
  ; given fishing group num in 'a'

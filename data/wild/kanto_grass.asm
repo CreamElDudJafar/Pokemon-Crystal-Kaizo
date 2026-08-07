@@ -198,7 +198,7 @@ KantoGrassWildMons:
 	db 100, WIGGLYTUFF
 	end_grass_wildmons
 
-	def_grass_wildmons ROUTE_2
+	def_grass_wildmons ROUTE_2_NORTH
 	db 100, 100, 100 ; encounter rates: morn/day/nite
 	; morn
 	db 100, PIKACHU
@@ -224,6 +224,62 @@ KantoGrassWildMons:
 	db 100, VENOMOTH
 	db 100, PARASECT
 	db 100, SCIZOR
+	end_grass_wildmons
+
+	def_grass_wildmons ROUTE_2_SOUTH
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, PIKACHU
+	db 100, LEDIAN
+	db 100, BEEDRILL
+	db 100, PINSIR
+	db 100, PARASECT
+	db 100, VENOMOTH
+	db 100, SCYTHER
+	; day
+	db 100, PIKACHU
+	db 100, BUTTERFREE
+	db 100, VENOMOTH
+	db 100, SCYTHER
+	db 100, PINSIR
+	db 100, BEEDRILL
+	db 100, SCIZOR
+	; nite
+	db 100, PIKACHU
+	db 100, ARIADOS
+	db 100, PINSIR
+	db 100, SCYTHER
+	db 100, VENOMOTH
+	db 100, PARASECT
+	db 100, SCIZOR
+	end_grass_wildmons
+
+	def_grass_wildmons VIRIDIAN_FOREST
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, BUTTERFREE
+	db 100, BEEDRILL
+	db 100, LEDIAN
+	db 100, HERACROSS
+	db 100, SCYTHER
+	db 100, PIKACHU
+	db 100, YANMA
+	; day
+	db 100, BUTTERFREE
+	db 100, BEEDRILL
+	db 100, SCYTHER
+	db 100, PINSIR
+	db 100, HERACROSS
+	db 100, PIKACHU
+	db 100, YANMA
+	; nite
+	db 100, VENOMOTH
+	db 100, ARIADOS
+	db 100, PINSIR
+	db 100, HERACROSS
+	db 100, SCIZOR
+	db 100, PARASECT
+	db 100, MURKROW
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_3
@@ -840,6 +896,205 @@ KantoGrassWildMons:
 	db 100, HOUNDOOM
 	db 100, JOLTEON
 	db 100, ESPEON
+	end_grass_wildmons
+
+
+	def_grass_wildmons CERULEAN_CAVE_1F
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, MACHAMP
+	db 100, ALAKAZAM
+	db 100, SNORLAX
+	db 100, LAPRAS
+	db 100, SCIZOR
+	db 100, KINGDRA
+	db 100, DRAGONITE
+	; day
+	db 100, MACHAMP
+	db 100, ALAKAZAM
+	db 100, SNORLAX
+	db 100, AERODACTYL
+	db 100, BLISSEY
+	db 100, KINGDRA
+	db 100, DRAGONITE
+	; nite
+	db 100, GENGAR
+	db 100, CROBAT
+	db 100, SNORLAX
+	db 100, UMBREON
+	db 100, SCIZOR
+	db 100, KINGDRA
+	db 100, TYRANITAR
+	end_grass_wildmons
+	def_grass_wildmons CERULEAN_CAVE_2F
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, ALAKAZAM
+	db 100, BLISSEY
+	db 100, PORYGON2
+	db 100, KINGDRA
+	db 100, SNORLAX
+	db 100, DRAGONITE
+	db 100, TYRANITAR
+	; day
+	db 100, MACHAMP
+	db 100, SCIZOR
+	db 100, AERODACTYL
+	db 100, PORYGON2
+	db 100, SNORLAX
+	db 100, DRAGONITE
+	db 100, TYRANITAR
+	; nite
+	db 100, GENGAR
+	db 100, CROBAT
+	db 100, UMBREON
+	db 100, HOUNDOOM
+	db 100, SNORLAX
+	db 100, DRAGONITE
+	db 100, TYRANITAR
+	end_grass_wildmons
+	def_grass_wildmons CERULEAN_CAVE_B1F
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, SNORLAX
+	db 100, BLISSEY
+	db 100, ALAKAZAM
+	db 100, SCIZOR
+	db 100, KINGDRA
+	db 100, DRAGONITE
+	db 100, TYRANITAR
+	; day
+	db 100, SNORLAX
+	db 100, BLISSEY
+	db 100, MACHAMP
+	db 100, PORYGON2
+	db 100, AERODACTYL
+	db 100, DRAGONITE
+	db 100, TYRANITAR
+	; nite
+	db 100, SNORLAX
+	db 100, GENGAR
+	db 100, CROBAT
+	db 100, UMBREON
+	db 100, HOUNDOOM
+	db 100, DRAGONITE
+	db 100, TYRANITAR
+	end_grass_wildmons
+
+
+
+	def_grass_wildmons SAFARI_ZONE_KANTO_AREA_1
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, KANGASKHAN
+	db 100, PORYGON
+	db 100, ELECTABUZZ
+	db 100, HERACROSS
+	db 100, NIDOQUEEN
+	db 100, DRATINI
+	db 100, MILTANK
+	; day
+	db 100, KANGASKHAN
+	db 100, PORYGON
+	db 100, MAGMAR
+	db 100, HERACROSS
+	db 100, NIDOKING
+	db 100, DRATINI
+	db 100, TAUROS
+	; nite
+	db 100, KANGASKHAN
+	db 100, PORYGON
+	db 100, HOUNDOOM
+	db 100, SNEASEL
+	db 100, UMBREON
+	db 100, DRATINI
+	db 100, MURKROW
+	end_grass_wildmons
+
+
+	def_grass_wildmons SAFARI_ZONE_KANTO_AREA_2
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, RHYDON
+	db 100, CHANSEY
+	db 100, SCYTHER
+	db 100, PINSIR
+	db 100, SKARMORY
+	db 100, GIRAFARIG
+	db 100, LARVITAR
+	; day
+	db 100, RHYDON
+	db 100, CHANSEY
+	db 100, SCYTHER
+	db 100, PINSIR
+	db 100, SKARMORY
+	db 100, TAUROS
+	db 100, LARVITAR
+	; nite
+	db 100, RHYDON
+	db 100, SNEASEL
+	db 100, GLIGAR
+	db 100, MURKROW
+	db 100, SKARMORY
+	db 100, STANTLER
+	db 100, LARVITAR
+	end_grass_wildmons
+
+
+	def_grass_wildmons SAFARI_ZONE_KANTO_AREA_3
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, NIDOKING
+	db 100, NIDOQUEEN
+	db 100, MACHAMP
+	db 100, DONPHAN
+	db 100, URSARING
+	db 100, SCIZOR
+	db 100, PUPITAR
+	; day
+	db 100, NIDOKING
+	db 100, NIDOQUEEN
+	db 100, GOLEM
+	db 100, DONPHAN
+	db 100, HERACROSS
+	db 100, SCIZOR
+	db 100, PUPITAR
+	; nite
+	db 100, HOUNDOOM
+	db 100, CROBAT
+	db 100, SNEASEL
+	db 100, GLIGAR
+	db 100, URSARING
+	db 100, SCIZOR
+	db 100, PUPITAR
+	end_grass_wildmons
+
+	def_grass_wildmons SAFARI_ZONE_KANTO_AREA_4
+	db 100, 100, 100 ; encounter rates: morn/day/nite
+	; morn
+	db 100, LAPRAS
+	db 100, KANGASKHAN
+	db 100, BLISSEY
+	db 100, AERODACTYL
+	db 100, PORYGON2
+	db 100, DRAGONAIR
+	db 100, MILTANK
+	; day
+	db 100, LAPRAS
+	db 100, TAUROS
+	db 100, BLISSEY
+	db 100, AERODACTYL
+	db 100, PORYGON2
+	db 100, DRAGONAIR
+	db 100, HERACROSS
+	; nite
+	db 100, LAPRAS
+	db 100, UMBREON
+	db 100, HOUNDOOM
+	db 100, AERODACTYL
+	db 100, PORYGON2
+	db 100, DRAGONAIR
+	db 100, CROBAT
 	end_grass_wildmons
 
 	db -1 ; end

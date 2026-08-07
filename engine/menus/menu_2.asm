@@ -77,7 +77,7 @@ PlaceItemInBagQuantity:
 ClearItemInBagQuantitysBox:
 	hlcoord 0, 0
 	ld b, 3
-	ld c, 9
+	ld c, 10
 	call ClearBox
 	hlcoord 1, 1
 	ld de, .BlankString
@@ -201,6 +201,46 @@ StartMenu_PrintSafariGameStatus: ; unreferenced
 	db "／５００@"
 .booru_ko
 	db "ボール　　　こ@"
+
+StartMenu_DrawSafariZoneStatusBox:
+	hlcoord 0, 0
+	ld b, 4
+	ld c, 8
+	jp Textbox
+
+StartMenu_PrintSafariZoneStatus:
+	ld hl, wOptions
+	ld a, [hl]
+	push af
+	set NO_TEXT_SCROLL, [hl]
+	call StartMenu_DrawSafariZoneStatusBox
+	hlcoord 1, 1
+	ld de, .StepsString
+	call PlaceString
+	hlcoord 1, 2
+	ld de, wSafariTimeRemaining
+	lb bc, 2, 3
+	call PrintNum
+	hlcoord 4, 2
+	ld de, .MaxStepsString
+	call PlaceString
+	hlcoord 1, 4
+	ld de, .BallsString
+	call PlaceString
+	hlcoord 7, 4
+	ld de, wSafariBallsRemaining
+	lb bc, 1, 2
+	call PrintNum
+	pop af
+	ld [wOptions], a
+	ret
+
+.StepsString:
+	db "STEPS:@"
+.MaxStepsString:
+	db "/500@"
+.BallsString:
+	db "BALLS×@"
 
 StartMenu_DrawBugContestStatusBox:
 	hlcoord 0, 0

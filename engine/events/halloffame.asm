@@ -608,7 +608,7 @@ HOF_AnimatePlayerPic:
 	db "PLAY TIME@"
 
 .Crystal:
-	db "Crystal@"
+	db "CRYSTAL@"
 
 .Kaizo:
-	db "Kaizo@"
+	db "KAIZO@"

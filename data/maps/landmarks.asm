@@ -59,11 +59,13 @@ Landmarks:
 	landmark  52,  92, Route1Name
 	landmark  52,  76, ViridianCityName
 	landmark  52,  64, Route2Name
+	landmark  52,  60, ViridianForestName
 	landmark  52,  52, PewterCityName
 	landmark  64,  52, Route3Name
 	landmark  76,  52, MtMoonName
 	landmark  88,  52, Route4Name
 	landmark 100,  52, CeruleanCityName
+	landmark  92, 44, CeruleanCaveName
 	landmark 100,  44, Route24Name
 	landmark 108,  36, Route25Name
 	landmark 100,  60, Route5Name
@@ -104,6 +106,7 @@ Landmarks:
 	landmark  12, 100, TohjoFallsName
 	landmark  20,  68, Route28Name
 	landmark 140, 116, FastShipName
+	landmark  92, 108, SafariZoneKantoName
 	assert_table_length NUM_LANDMARKS
 
 NewBarkTownName:     db "NEW BARK<BSP>TOWN@"
@@ -135,6 +138,7 @@ PalletTownName:      db "PALLET TOWN@"
 ViridianCityName:    db "VIRIDIAN<BSP>CITY@"
 PewterCityName:      db "PEWTER CITY@"
 CeruleanCityName:    db "CERULEAN<BSP>CITY@"
+CeruleanCaveName:    db "CERULEAN<BSP>CAVE@"
 LavenderTownName:    db "LAVENDER<BSP>TOWN@"
 VermilionCityName:   db "VERMILION<BSP>CITY@"
 CeladonCityName:     db "CELADON<BSP>CITY@"
@@ -148,6 +152,7 @@ RockTunnelName:      db "ROCK TUNNEL@"
 LavRadioTowerName:   db "LAV¯RADIO TOWER@"
 SeafoamIslandsName:  db "SEAFOAM¯ISLANDS@"
 Route1Name:          db "ROUTE 1@"
+ViridianForestName:  db "VIRIDIAN<BSP>FOREST@"
 Route2Name:          db "ROUTE 2@"
 Route3Name:          db "ROUTE 3@"
 Route4Name:          db "ROUTE 4@"
@@ -197,9 +202,10 @@ DarkCaveName:        db "DARK CAVE@"
 IlexForestName:      db "ILEX<BSP>FOREST@"
 BurnedTowerName:     db "BURNED<BSP>TOWER@"
 FastShipName:        db "FAST SHIP@"
-ViridianForestName:  db "VIRIDIAN<BSP>FOREST@" ; unreferenced
 DiglettsCaveName:    db "DIGLETT'S<BSP>CAVE@"
 TohjoFallsName:      db "TOHJO FALLS@"
 UndergroundName:     db "UNDERGROUND@"
 BattleTowerName:     db "BATTLE<BSP>TOWER@"
 SpecialMapName:      db "SPECIAL@"
+SafariZoneKantoName:
+	db "SAFARI ZONE@"

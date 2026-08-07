@@ -337,6 +337,13 @@ BattleText_StringBuffer1GrewToLevel:
 	sound_dex_fanfare_50_79
 	text_end
 
+BattleText_WildMonIsWatching:
+	text "Wild @"
+	text_ram wEnemyMonNickname
+	text_start
+	line "is being cautious."
+	prompt
+
 BattleText_WildMonIsEating:
 	text "Wild @"
 	text_ram wEnemyMonNickname
@@ -350,6 +357,16 @@ BattleText_WildMonIsAngry:
 	text_start
 	line "is angry!"
 	prompt
+
+BattleText_ThrewRock:
+	text "<PLAYER> threw a"
+	line "rock."
+	done
+
+BattleText_ThrewBait:
+	text "<PLAYER> threw"
+	line "some bait."
+	done
 
 FastAsleepText:
 	text "<USER>"

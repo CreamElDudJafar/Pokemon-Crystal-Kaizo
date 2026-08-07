@@ -230,15 +230,19 @@ ENDM
 	connection east, Route45, ROUTE_45, -36
 
 	map_attributes PewterCity, PEWTER_CITY, $0f, SOUTH | EAST
-	connection south, Route2, ROUTE_2, 5
+	connection south, Route2North, ROUTE_2_NORTH, 4
 	connection east, Route3, ROUTE_3, 5
 
-	map_attributes Route2, ROUTE_2, $0f, NORTH | SOUTH
-	connection north, PewterCity, PEWTER_CITY, -5
-	connection south, ViridianCity, VIRIDIAN_CITY, -5
+	map_attributes Route2South, ROUTE_2_SOUTH, $0f, NORTH | SOUTH
+	connection north, Route2North, ROUTE_2_NORTH, 0
+	connection south, ViridianCity, VIRIDIAN_CITY, -4
+
+	map_attributes Route2North, ROUTE_2_NORTH, $0f, NORTH | SOUTH
+	connection north, PewterCity, PEWTER_CITY, -4
+	connection south, Route2South, ROUTE_2_SOUTH, 0
 
 	map_attributes ViridianCity, VIRIDIAN_CITY, $0f, NORTH | SOUTH | WEST
-	connection north, Route2, ROUTE_2, 5
+	connection north, Route2South, ROUTE_2_SOUTH, 4
 	connection south, Route1, ROUTE_1, 10
 	connection west, Route22, ROUTE_22, 4
 
@@ -482,6 +486,9 @@ ENDM
 	map_attributes SafariZoneFuchsiaGateBeta, SAFARI_ZONE_FUCHSIA_GATE_BETA, $00, 0
 	map_attributes SafariZoneBeta, SAFARI_ZONE_BETA, $00, 0
 	map_attributes VictoryRoad, VICTORY_ROAD, $1d, 0
+	map_attributes CeruleanCave1F, CERULEAN_CAVE_1F, $09, 0
+	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $09, 0
+	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $09, 0
 	map_attributes EcruteakTinTowerEntrance, ECRUTEAK_TIN_TOWER_ENTRANCE, $00, 0
 	map_attributes WiseTriosRoom, WISE_TRIOS_ROOM, $00, 0
 	map_attributes EcruteakPokecenter1F, ECRUTEAK_POKECENTER_1F, $00, 0
@@ -664,6 +671,9 @@ ENDM
 	map_attributes ViridianPokecenter2FBeta, VIRIDIAN_POKECENTER_2F_BETA, $00, 0
 	map_attributes Route2NuggetHouse, ROUTE_2_NUGGET_HOUSE, $00, 0
 	map_attributes Route2Gate, ROUTE_2_GATE, $00, 0
+	map_attributes ViridianForest, VIRIDIAN_FOREST, $58, 0
+	map_attributes ViridianForestGateN, VIRIDIAN_FOREST_GATE_N, $00, 0
+	map_attributes ViridianForestGateS, VIRIDIAN_FOREST_GATE_S, $00, 0
 	map_attributes VictoryRoadGate, VICTORY_ROAD_GATE, $00, 0
 	map_attributes ElmsLab, ELMS_LAB, $00, 0
 	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $00, 0
@@ -695,3 +705,13 @@ ENDM
 	map_attributes Route30BerryHouse, ROUTE_30_BERRY_HOUSE, $00, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $00, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $00, 0
+	map_attributes SafariZoneKantoEntrance, SAFARI_ZONE_KANTO_ENTRANCE, $00, 0
+	map_attributes SafariZoneKantoArea1, SAFARI_ZONE_KANTO_AREA_1, $b0, 0
+	map_attributes SafariZoneKantoArea2, SAFARI_ZONE_KANTO_AREA_2, $b0, 0
+	map_attributes SafariZoneKantoArea3, SAFARI_ZONE_KANTO_AREA_3, $b0, 0
+	map_attributes SafariZoneKantoArea4, SAFARI_ZONE_KANTO_AREA_4, $b0, 0
+	map_attributes SafariKantoRestHouseArea1, SAFARI_KANTO_REST_HOUSE_AREA_1, $00, 0
+	map_attributes SafariKantoRestHouseArea2, SAFARI_KANTO_REST_HOUSE_AREA_2, $00, 0
+	map_attributes SafariKantoRestHouseArea3, SAFARI_KANTO_REST_HOUSE_AREA_3, $00, 0
+	map_attributes SafariKantoRestHouseArea4, SAFARI_KANTO_REST_HOUSE_AREA_4, $00, 0
+	map_attributes SafariKantoSecretHouse, SAFARI_KANTO_SECRET_HOUSE, $00, 0

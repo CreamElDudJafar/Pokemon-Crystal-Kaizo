@@ -154,6 +154,9 @@ ENDM
 	map_const SAFARI_ZONE_FUCHSIA_GATE_BETA,                5,  4 ; 89
 	map_const SAFARI_ZONE_BETA,                            10, 18 ; 90
 	map_const VICTORY_ROAD,                                10, 36 ; 91
+	map_const CERULEAN_CAVE_1F,                            20, 14
+	map_const CERULEAN_CAVE_2F,                            20, 14
+	map_const CERULEAN_CAVE_B1F,                           20, 14
 	endgroup
 
 	newgroup ECRUTEAK                                             ;  4
@@ -438,7 +441,7 @@ ENDM
 	endgroup
 
 	newgroup VIRIDIAN                                             ; 23
-	map_const ROUTE_2,                                     10, 27 ;  1
+	map_const ROUTE_2_SOUTH,                               12, 17 ;  1
 	map_const ROUTE_22,                                    20,  9 ;  2
 	map_const VIRIDIAN_CITY,                               20, 18 ;  3
 	map_const VIRIDIAN_GYM,                                 5,  9 ;  4
@@ -450,7 +453,11 @@ ENDM
 	map_const VIRIDIAN_POKECENTER_2F_BETA,                  8,  4 ; 10
 	map_const ROUTE_2_NUGGET_HOUSE,                         4,  4 ; 11
 	map_const ROUTE_2_GATE,                                 5,  4 ; 12
-	map_const VICTORY_ROAD_GATE,                           10,  9 ; 13
+	map_const ROUTE_2_NORTH,                               12, 19 ; 13
+	map_const VIRIDIAN_FOREST,                             17, 28 ; 14
+	map_const VIRIDIAN_FOREST_GATE_N,                       5,  4 ; 15
+	map_const VIRIDIAN_FOREST_GATE_S,                       5,  4 ; 16
+	map_const VICTORY_ROAD_GATE,                           10,  9 ; 17
 	endgroup
 
 	newgroup NEW_BARK                                             ; 24
@@ -501,4 +508,18 @@ ENDM
 	map_const ROUTE_31_VIOLET_GATE,                         5,  4 ; 11
 	endgroup
 
-DEF NUM_MAP_GROUPS EQU const_value ; 26
+
+	newgroup SAFARI_ZONE                                          ; 27
+	map_const SAFARI_ZONE_KANTO_ENTRANCE,                   5,  5 ;  1
+	map_const SAFARI_ZONE_KANTO_AREA_1,                    15, 15 ;  2
+	map_const SAFARI_ZONE_KANTO_AREA_2,                    15, 13 ;  3
+	map_const SAFARI_ZONE_KANTO_AREA_3,                    20, 18 ;  4
+	map_const SAFARI_ZONE_KANTO_AREA_4,                    15, 13 ;  5
+	map_const SAFARI_KANTO_REST_HOUSE_AREA_1,               4,  4 ;  6
+	map_const SAFARI_KANTO_REST_HOUSE_AREA_2,               4,  4 ;  7
+	map_const SAFARI_KANTO_REST_HOUSE_AREA_3,               4,  4 ;  8
+	map_const SAFARI_KANTO_REST_HOUSE_AREA_4,               4,  4 ;  9
+	map_const SAFARI_KANTO_SECRET_HOUSE,                     4,  4 ; 10
+	endgroup
+
+DEF NUM_MAP_GROUPS EQU const_value ; 27

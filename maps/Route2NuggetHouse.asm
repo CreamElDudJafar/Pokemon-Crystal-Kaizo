@@ -23,6 +23,9 @@ Route2NuggetHouseFisherScript:
 	closetext
 	end
 
+Route2NuggetHouseBookshelf: ; unreferenced
+	jumpstd DifficultBookshelfScript
+
 Route2NuggetHouseFisherText:
 	text "Hi! Wow, I'm glad"
 	line "to see you."
@@ -50,8 +53,8 @@ Route2NuggetHouse_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, ROUTE_2, 1
-	warp_event  3,  7, ROUTE_2, 1
+	warp_event  2,  7, ROUTE_2_NORTH, 1
+	warp_event  3,  7, ROUTE_2_NORTH, 1
 
 	def_coord_events
 

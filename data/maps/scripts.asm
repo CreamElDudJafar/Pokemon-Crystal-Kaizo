@@ -452,12 +452,19 @@ INCLUDE "maps/CinnabarPokecenter1F.asm"
 INCLUDE "maps/CinnabarPokecenter2FBeta.asm"
 INCLUDE "maps/Route19FuchsiaGate.asm"
 INCLUDE "maps/SeafoamGym.asm"
+INCLUDE "maps/CeruleanCave1F.asm"
+INCLUDE "maps/CeruleanCave2F.asm"
+INCLUDE "maps/CeruleanCaveB1F.asm"
 
 
 SECTION "Map Scripts 24", ROMX
 
 INCLUDE "maps/Route33.asm"
-INCLUDE "maps/Route2.asm"
+INCLUDE "maps/Route2South.asm"
+INCLUDE "maps/Route2North.asm"
+INCLUDE "maps/ViridianForest.asm"
+INCLUDE "maps/ViridianForestGateN.asm"
+INCLUDE "maps/ViridianForestGateS.asm"
 INCLUDE "maps/Route1.asm"
 INCLUDE "maps/PalletTown.asm"
 INCLUDE "maps/Route21.asm"
@@ -484,5 +491,20 @@ SECTION "Map Scripts 25", ROMX
 
 INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/Route10North.asm"
+
+ENDSECTION
+
+SECTION "Safari Zone Map Scripts", ROMX
+
+INCLUDE "maps/SafariZoneKantoEntrance.asm"
+INCLUDE "maps/SafariZoneKantoArea1.asm"
+INCLUDE "maps/SafariZoneKantoArea2.asm"
+INCLUDE "maps/SafariZoneKantoArea3.asm"
+INCLUDE "maps/SafariZoneKantoArea4.asm"
+INCLUDE "maps/SafariKantoRestHouseArea1.asm"
+INCLUDE "maps/SafariKantoRestHouseArea2.asm"
+INCLUDE "maps/SafariKantoRestHouseArea3.asm"
+INCLUDE "maps/SafariKantoRestHouseArea4.asm"
+INCLUDE "maps/SafariKantoSecretHouse.asm"
 
 ENDSECTION

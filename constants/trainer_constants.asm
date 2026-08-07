@@ -348,6 +348,9 @@ DEF KRIS EQU __trainer_class__
 	const ARNIE4
 	const ARNIE5
 	const WAYNE
+	const ABNER
+	const ELLIS
+	const STACEY
 
 	trainerclass FISHER ; 25
 	const JUSTIN

@@ -26,6 +26,7 @@ MapGroupNum_Names::
 	dw New_Bark_Map_Names
 	dw Saffron_Map_Names
 	dw Cherrygrove_Map_Names
+	dw SafariZone_Map_Names
 	assert_table_length NUM_MAP_GROUPS
 
 GetMapGroupNum_Name::
@@ -179,6 +180,9 @@ Dungeons_Map_Names: ;newgroup DUNGEONS
 	dw Dungeons_Map_Name89 ; map_const SAFARI_ZONE_FUCHSIA_GATE_BETA ; 89
 	dw Dungeons_Map_Name90 ; map_const SAFARI_ZONE_BETA,                            10, 18 ; 90
 	dw Dungeons_Map_Name91 ; map_const VICTORY_ROAD,; 91
+	dw Dungeons_Map_Name92 ; map_const CERULEAN_CAVE_1F
+	dw Dungeons_Map_Name93 ; map_const CERULEAN_CAVE_2F
+	dw Dungeons_Map_Name94 ; map_const CERULEAN_CAVE_B1F
 	assert_table_length NUM_DUNGEONS_MAPS
 	
 
@@ -484,7 +488,7 @@ Cianwood_Map_Names: ;newgroup CIANWOOD
 
 Viridian_Map_Names: ;newgroup VIRIDIAN ; 23
 	table_width 2, Viridian_Map_Names
-	dw Viridian_Map_Name1 ; map_const ROUTE_2,                                     10, 27 ;  1
+	dw Viridian_Map_Name1 ; map_const ROUTE_2_SOUTH,                                     10, 27 ;  1
 	dw Viridian_Map_Name2 ; map_const ROUTE_22,                                    20,  9 ;  2
 	dw Viridian_Map_Name3 ; map_const VIRIDIAN_CITY,                               20, 18 ;  3
 	dw Viridian_Map_Name4 ; map_const VIRIDIAN_GYM ;  4
@@ -496,7 +500,11 @@ Viridian_Map_Names: ;newgroup VIRIDIAN ; 23
 	dw Viridian_Map_Name10 ; map_const VIRIDIAN_POKECENTER_2F_BETA ; 10
 	dw Viridian_Map_Name11 ; map_const ROUTE_2_NUGGET_HOUSE ; 11
 	dw Viridian_Map_Name12 ; map_const ROUTE_2_GATE ; 12
-	dw Viridian_Map_Name13 ; map_const VICTORY_ROAD_GATE,                           10,  9 ; 13
+	dw Viridian_Map_Name13 ; map_const ROUTE_2_NORTH ; 13
+	dw Viridian_Map_Name14 ; map_const VIRIDIAN_FOREST ; 14
+	dw Viridian_Map_Name15 ; map_const VIRIDIAN_FOREST_GATE_N ; 15
+	dw Viridian_Map_Name16 ; map_const VIRIDIAN_FOREST_GATE_S ; 16
+	dw Viridian_Map_Name17 ; map_const VICTORY_ROAD_GATE ; 17
 	assert_table_length NUM_VIRIDIAN_MAPS
 
 	
@@ -781,6 +789,12 @@ Dungeons_Map_Name90: ; map_const SAFARI_ZONE_BETA,; 90
 	db "SAFARI ZONE@"
 Dungeons_Map_Name91: ; map_const VICTORY_ROAD,;  4
 	db "VICTORY ROAD@"
+Dungeons_Map_Name92:
+	db "CERULEAN CAVE 1F@"
+Dungeons_Map_Name93:
+	db "CERULEAN CAVE 2F@"
+Dungeons_Map_Name94:
+	db "CERULEAN CAVE B1F@"
 
 Ecruteak_Map_Name1: ; map_const ECRUTEAK_TIN_TOWER_ENTRANCE,;  1
 	db "TIN TOWER PATH@"
@@ -1249,7 +1263,7 @@ Cianwood_Map_Name15: ; map_const ROUTE_40_BATTLE_TOWER_GATE ; 15
 Cianwood_Map_Name16: ; map_const BATTLE_TOWER_OUTSIDE ; 16
 	db "BATTLE TOWER@"
 
-Viridian_Map_Name1: ; map_const ROUTE_2,;  1
+Viridian_Map_Name1: ; map_const ROUTE_2_SOUTH,;  1
 	db "ROUTE 2@"
 Viridian_Map_Name2: ; map_const ROUTE_22,  2
 	db "ROUTE 22@"
@@ -1273,7 +1287,15 @@ Viridian_Map_Name11: ; map_const ROUTE_2_NUGGET_HOUSE ; 11
 	db "RT. 2 NUGGET HOUSE@"
 Viridian_Map_Name12: ; map_const ROUTE_2_GATE ; 12
 	db "ROUTE 2 GATE@"
-Viridian_Map_Name13: ; map_const VICTORY_ROAD_GATE, 13
+Viridian_Map_Name13: ; map_const ROUTE_2_NORTH ; 13
+	db "ROUTE 2@"
+Viridian_Map_Name14: ; map_const VIRIDIAN_FOREST ; 14
+	db "VIRIDIAN FOREST@"
+Viridian_Map_Name15: ; map_const VIRIDIAN_FOREST_GATE_N ; 15
+	db "VIRIDIAN FOREST GATE N@"
+Viridian_Map_Name16: ; map_const VIRIDIAN_FOREST_GATE_S ; 16
+	db "VIRIDIAN FOREST GATE S@"
+Viridian_Map_Name17: ; map_const VICTORY_ROAD_GATE ; 17
 	db "VICTORY ROAD GATE@"
 
 New_Bark_Map_Name1: ; map_const ROUTE_26,  1
@@ -1356,3 +1378,28 @@ Cherrygrove_Map_Name10: ; map_const MR_POKEMONS_HOUSE ; 10
 	db "MR. #MON HOUSE@"
 Cherrygrove_Map_Name11: ; map_const ROUTE_31_VIOLET_GATE ; 11
 	db "ROUTE 31 GATE@"
+
+SafariZone_Map_Names:
+	table_width 2, SafariZone_Map_Names
+	dw SafariZone_Map_Name1
+	dw SafariZone_Map_Name2
+	dw SafariZone_Map_Name3
+	dw SafariZone_Map_Name4
+	dw SafariZone_Map_Name5
+	dw SafariZone_Map_Name6
+	dw SafariZone_Map_Name7
+	dw SafariZone_Map_Name8
+	dw SafariZone_Map_Name9
+	dw SafariZone_Map_Name10
+	assert_table_length NUM_SAFARI_ZONE_MAPS
+
+SafariZone_Map_Name1:  db "SAFARI ZONE ENTRANCE@"
+SafariZone_Map_Name2:  db "SAFARI ZONE AREA 1@"
+SafariZone_Map_Name3:  db "SAFARI ZONE AREA 2@"
+SafariZone_Map_Name4:  db "SAFARI ZONE AREA 3@"
+SafariZone_Map_Name5:  db "SAFARI ZONE AREA 4@"
+SafariZone_Map_Name6:  db "SAFARI REST HOUSE@"
+SafariZone_Map_Name7:  db "SAFARI REST HOUSE@"
+SafariZone_Map_Name8:  db "SAFARI REST HOUSE@"
+SafariZone_Map_Name9:  db "SAFARI REST HOUSE@"
+SafariZone_Map_Name10: db "SAFARI SECRET HOUSE@"
