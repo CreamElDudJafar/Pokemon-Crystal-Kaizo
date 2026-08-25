@@ -74,7 +74,7 @@ RGBGFXFLAGS  ?= -Weverything
 	compare \
 	tools
 
-all: crystal11 crystal11_debug
+all: crystal crystal_debug crystal11 crystal11_debug
 crystal:         pokecrystal.gbc
 crystal11:       pokecrystal11.gbc
 crystal_au:      pokecrystal_au.gbc
