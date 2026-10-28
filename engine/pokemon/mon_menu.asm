@@ -1479,6 +1479,12 @@ PlaceMoveData:
 ; This converts values out of 256 into a value
 ; out of 100. It achieves this by multiplying
 ; the value by 100 and dividing it by 256.
+BattleMoveInfoConvertAccuracy:
+	ld a, [wBuffer1]
+	call ConvertPercentages
+	ld [wBuffer1], a
+	ret
+
 ConvertPercentages:
 
 	; Overwrite the "hl" register.
