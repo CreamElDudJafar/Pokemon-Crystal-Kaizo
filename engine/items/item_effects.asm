@@ -2070,42 +2070,54 @@ StatusKitEffect:
 	and a
 	jp nz, NoEffectMessage
 
-	push hl
-	ld hl, StatusKitParalyzeText
-	call PrintText
-	call YesNoBox
-	jr nc, .paralyze
+	ld hl, .MenuHeader
+	call LoadMenuHeader
+	call VerticalMenu
+	call CloseWindow
+	jr c, .cancel
 
-	ld hl, StatusKitBurnText
-	call PrintText
-	call YesNoBox
-	jr nc, .burn
-
-	ld hl, StatusKitPoisonText
-	call PrintText
-	call YesNoBox
-	jr nc, .poison
-
-	pop hl
-	xor a
-	ld [wItemEffectSucceeded], a
-	ret
-
-.paralyze
-	ld a, 1 << PAR
-	jr .apply
-.burn
-	ld a, 1 << BRN
-	jr .apply
-.poison
-	ld a, 1 << PSN
-.apply
-	pop hl
+	ld a, [wMenuCursorY]
+	cp 6
+	jr z, .cancel
+	dec a
+	ld e, a
+	ld d, 0
+	ld hl, .Statuses
+	add hl, de
+	ld a, [hl]
+	push af
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	pop af
 	ld [hl], a
 	call Play_SFX_FULL_HEAL
 	ld hl, StatusKitAppliedText
 	call PrintText
 	ret
+
+.cancel
+	xor a
+	ld [wItemEffectSucceeded], a
+	ret
+
+.Statuses:
+	db 1 << PAR, 1 << BRN, 1 << PSN, 3, 1 << FRZ
+
+.MenuHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 10, 2, SCREEN_WIDTH - 1, 15
+	dw .MenuData
+	db 1
+
+.MenuData:
+	db STATICMENU_CURSOR
+	db 6
+	db "PAR@"
+	db "BRN@"
+	db "PSN@"
+	db "SLP@"
+	db "FRZ@"
+	db "CANCEL@"
 
 RepellentEffect:
 	ld a, [wRepelEffect]
@@ -2195,6 +2207,16 @@ StatusKitBurnText:
 
 StatusKitPoisonText:
 	text "POISON this"
+	line "#MON?"
+	done
+
+StatusKitSleepText:
+	text "SLEEP this"
+	line "#MON?"
+	done
+
+StatusKitFreezeText:
+	text "FREEZE this"
 	line "#MON?"
 	done
 

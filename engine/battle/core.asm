@@ -5806,8 +5806,8 @@ MoveInfoBox:
 	xor a
 	ldh [hBGMapMode], a
 
-	hlcoord 0, 8
-	ld b, 3
+	hlcoord 0, 7
+	ld b, 4
 	ld c, 9
 	call Textbox
 	call MobileTextBorder
@@ -5826,7 +5826,7 @@ MoveInfoBox:
 	hlcoord 1, 10
 	ld de, .Disabled
 	call PlaceString
-	jr .done
+	ret
 
 .not_disabled
 	ld hl, wMenuCursorY
@@ -5840,11 +5840,19 @@ MoveInfoBox:
 	ld a, [hl]
 	ld [wCurPlayerMove], a
 
+	ld a, [wCurPartyMon]
+	push af
+	ld a, [wMonType]
+	push af
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
 	ld a, WILDMON
 	ld [wMonType], a
 	callfar GetMaxPPOfMove
+	pop af
+	ld [wMonType], a
+	pop af
+	ld [wCurPartyMon], a
 
 	ld hl, wMenuCursorY
 	ld c, [hl]
@@ -5856,18 +5864,55 @@ MoveInfoBox:
 	and PP_MASK
 	ld [wStringBuffer1], a
 	call .PrintPP
+	callfar UpdateMoveData
 
 	hlcoord 1, 9
-	ld de, .Type
+	ld de, .Power
+	call PlaceString
+	hlcoord 5, 9
+	ld a, [wPlayerMoveStruct + MOVE_POWER]
+	cp 2
+	jr c, .no_power
+	ld [wTextDecimalByte], a
+	ld de, wTextDecimalByte
+	lb bc, 1, 3
+	call PrintNum
+	jr .print_accuracy
+
+.no_power
+	ld de, .NoPower
 	call PlaceString
 
-	hlcoord 7, 11
-	ld [hl], '/'
-
-	callfar UpdateMoveData
-	ld a, [wPlayerMoveStruct + MOVE_ANIM]
-	ld b, a
-	hlcoord 2, 10
+.print_accuracy
+	hlcoord 1, 10
+	ld de, .Accuracy
+	call PlaceString
+	ld a, [wMenuCursorY]
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, wBattleMonMoves
+	add hl, bc
+	ld a, [hl]
+	ld bc, MOVE_LENGTH
+	ld hl, (Moves + MOVE_ACC) - MOVE_LENGTH
+	call AddNTimes
+	ld a, BANK(Moves)
+	call GetFarByte
+	ld [wBuffer1], a
+	callfar BattleMoveInfoConvertAccuracy
+	ld de, wBuffer1
+	lb bc, 1, 3
+	hlcoord 5, 10
+	call PrintNum
+	ld a, [wMenuCursorY]
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, wBattleMonMoves
+	add hl, bc
+	ld b, [hl]
+	hlcoord 1, 8
 	predef PrintMoveType
 
 .done
@@ -5875,16 +5920,19 @@ MoveInfoBox:
 
 .Disabled:
 	db "Disabled!@"
-.Type:
-	db "TYPE/@"
+.Power:
+	db "PWR@"
+.Accuracy:
+	db "ACC@"
+.NoPower:
+	db "---@"
 
 .PrintPP:
-	hlcoord 5, 11
-	ld a, [wLinkMode] ; What's the point of this check?
-	cp LINK_MOBILE
-	jr c, .ok
-	hlcoord 5, 11
-.ok
+	hlcoord 1, 11
+	ld a, 'P'
+	ld [hli], a
+	ld [hl], a
+	hlcoord 4, 11
 	push hl
 	ld de, wStringBuffer1
 	lb bc, 1, 2
@@ -5894,7 +5942,7 @@ MoveInfoBox:
 	inc hl
 	ld [hl], '/'
 	inc hl
-	ld de, wNamedObjectIndex
+	ld de, wTempPP
 	lb bc, 1, 2
 	call PrintNum
 	ret
