@@ -630,14 +630,26 @@ MartPlaceInBagQuantity:
 	jr z, .get_item_pocket
 	cp BALL
 	jr z, .get_ball_pocket
-	cp BERRY
+	cp BERRIES
 	jr z, .get_berry_pocket
-	cp TM01
-	jr z, .ClearItemInBagQuantitysBox
+	cp TM_HM
+	jr z, .get_tmhm_pocket
 
 .ClearItemInBagQuantitysBox
 	farcall ClearItemInBagQuantitysBox
 	ret
+
+.get_tmhm_pocket
+	ld a, [wCurItem]
+	sub TM01
+	cp NUM_TMS + NUM_HMS
+	jr nc, .ClearItemInBagQuantitysBox
+	ld c, a
+	ld b, 0
+	ld hl, wTMsHMs
+	add hl, bc
+	ld b, [hl]
+	jr .done
 
 .get_item_pocket
 	ld hl, wNumItems

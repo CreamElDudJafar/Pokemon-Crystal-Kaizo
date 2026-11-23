@@ -258,6 +258,10 @@ AI_TryItem:
 	cp e
 	jr nc, .yes
 
+.no
+	and a
+	ret
+
 .yes
 	scf
 	ret
