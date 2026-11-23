@@ -185,6 +185,38 @@ NeighborScript:
 PlayersHouse1FTVScript:
 	jumptext PlayersHouse1FTVText
 
+PlayersHouse1FWardrobeScript:
+	opentext
+	writetext PlayersHouse1FWardrobeQuestionText
+	yesorno
+	iffalse .Cancel
+	writetext PlayersHouse1FWardrobeLetsGoText
+	waitbutton
+	closetext
+	special FadeOutToWhite
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .ChangeToBoy
+	setflag ENGINE_PLAYER_IS_FEMALE
+	setval (PAL_NPC_BLUE << 4)
+	sjump .Refresh
+
+.ChangeToBoy:
+	clearflag ENGINE_PLAYER_IS_FEMALE
+	setval (PAL_NPC_RED << 4)
+
+.Refresh:
+	special SetPlayerPalette
+	reloadmap
+	opentext
+	writetext PlayersHouse1FWardrobeDoneText
+	waitbutton
+	closetext
+	end
+
+.Cancel:
+	closetext
+	end
+
 PlayersHouse1FStoveScript:
 	jumptext PlayersHouse1FStoveText
 
@@ -372,6 +404,19 @@ PlayersHouse1FFridgeText:
 	line "tasty LEMONADE!"
 	done
 
+PlayersHouse1FWardrobeQuestionText:
+	text "Maybe it's time"
+	line "for a new look?"
+	prompt
+
+PlayersHouse1FWardrobeLetsGoText:
+	text "Here goes!"
+	done
+
+PlayersHouse1FWardrobeDoneText:
+	text "All set!"
+	done
+
 PlayersHouse1FTVText:
 	text "There's a movie on"
 	line "TV: Stars dot the"
@@ -400,6 +445,7 @@ PlayersHouse1F_MapEvents:
 	bg_event  1,  1, BGEVENT_READ, PlayersHouse1FSinkScript
 	bg_event  2,  1, BGEVENT_READ, PlayersHouse1FFridgeScript
 	bg_event  4,  1, BGEVENT_READ, PlayersHouse1FTVScript
+	bg_event  5,  1, BGEVENT_READ, PlayersHouse1FWardrobeScript
 
 	def_object_events
 	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_1
